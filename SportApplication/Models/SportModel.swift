@@ -26,15 +26,7 @@ struct Sports : Codable {
         case strSportDescription = "strSportDescription"
     }
 
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        idSport = try values.decodeIfPresent(String.self, forKey: .idSport)
-        strSport = try values.decodeIfPresent(String.self, forKey: .strSport)
-        strFormat = try values.decodeIfPresent(String.self, forKey: .strFormat)
-        strSportThumb = try values.decodeIfPresent(String.self, forKey: .strSportThumb)
-        strSportThumbGreen = try values.decodeIfPresent(String.self, forKey: .strSportThumbGreen)
-        strSportDescription = try values.decodeIfPresent(String.self, forKey: .strSportDescription)
-    }
+
 
 }
 
@@ -48,9 +40,5 @@ struct SportsModel : Codable {
         case sports = "sports"
     }
 
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        sports = try values.decodeIfPresent([Sports].self, forKey: .sports)
-    }
 
 }

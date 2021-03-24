@@ -237,7 +237,7 @@
 		2B870DBF2606518400C47105 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				2B2FFDCC260ADA3900B98699 /* Merriweather-Black.ttf */,
+				2BAF9FC0260B5B01001E1A91 /* Fonts */,
 				2B870D912606512200C47105 /* Assets.xcassets */,
 			);
 			path = Assets;
@@ -291,6 +291,14 @@
 				2B870DDD26065E0500C47105 /* ChatViewController.swift */,
 			);
 			path = "Chat Controller";
+			sourceTree = "<group>";
+		};
+		2BAF9FC0260B5B01001E1A91 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2B2FFDCC260ADA3900B98699 /* Merriweather-Black.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		2BCC824F260918B2000EB543 /* Styles */ = {

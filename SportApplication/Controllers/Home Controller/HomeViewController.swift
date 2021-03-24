@@ -11,7 +11,7 @@ import Reachability
 class HomeViewController: UIViewController {
 
     var mainColor = MainColor()
-    lazy var sportsArray = [Sports]()
+    var sportsArray = [Sports]()
     
     
     //declare this property where it won't go out of scope relative to your listener
@@ -46,27 +46,28 @@ class HomeViewController: UIViewController {
     
     
     
+    
+    
     func getSports() {
-        
+
         ApiServices.instance.getAllSportJsonData(url: ApiURls.allSports.rawValue) { (data: SportsModel?, error) in
-            
+
             if error != nil || data == nil{
-                
+
                 print(error!)
-                
+
             }else if let sportsData = data{
-                
+
                 self.sportsArray = (sportsData.sports)!
-                
+
                 DispatchQueue.main.async {
                     self.sportsCollectionView.reloadData()
                 }
-            
-                
+
             }
-            
+
         }
-        
+
     }
     
 

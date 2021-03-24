@@ -10,6 +10,7 @@ import Alamofire
 
 class ApiServices{
     
+    // singletone
     static let instance = ApiServices()
     
     
@@ -45,9 +46,6 @@ class ApiServices{
                     
             }
         }
-    
     }
-    
-    
 }
 

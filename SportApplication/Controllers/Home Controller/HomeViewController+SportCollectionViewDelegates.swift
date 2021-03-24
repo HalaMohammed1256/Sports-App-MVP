@@ -20,9 +20,9 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             numberOfItems = 1
             
         }else{
-            
+
             numberOfItems = sportsArray.count
-            
+
         }
         
         return numberOfItems
@@ -36,15 +36,16 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         
         if reachability.connection == .unavailable{
             
-            cell.sportImageView.image = UIImage(named: "no_internet3")
-            cell.sportImageView.contentMode = .scaleAspectFit
+            cell.sportImageView.image = UIImage(named: "no_internet4")
+            cell.sportImageView.contentMode = .scaleToFill
             cell.sportNameLabel.text = "No Internet Connection!"
-            cell.sportNameLabel.font = UIFont(name: "Merriweather-Black", size: 30)
+            cell.sportNameLabel.font = UIFont(name: "Merriweather-Black", size: 24)
+        cell.sportNameLabel.textColor = mainColor.noInternetColor
             
         }else{
-            
+
             cell.sportImageView.sd_setImage(with: URL(string:  sportsArray[indexPath.row].strSportThumb!), placeholderImage: UIImage(named: "no_internet"))
-            
+
             cell.sportNameLabel.text = sportsArray[indexPath.row].strSport
             cell.sportNameLabel.font = UIFont(name: "Merriweather-Black", size: 15)
             cell.sportNameLabel.textColor = .black
@@ -66,11 +67,20 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             return CGSize(width: (collectionView.frame.width), height: collectionView.frame.height)
             
         }else{
-            
+
             return CGSize(width: (collectionView.frame.width/2.1), height: collectionView.frame.width/2)
-            
+
         }
 
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let leaguesView = self.storyboard?.instantiateViewController(identifier: String(describing: LeaguesViewController.self)) as! LeaguesViewController
+        
+        
+        // sequa
+        
     }
     
     

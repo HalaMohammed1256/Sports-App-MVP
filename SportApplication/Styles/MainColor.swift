@@ -15,6 +15,7 @@ struct MainColor{
     
     var secondaryColor : UIColor = UIColor(red: (251/255.0), green: (189/255.0), blue: (6/255.0), alpha: 1.0)
     
-
+    var noInternetColor : UIColor = UIColor(red: (80/255.0), green: (82/255.0), blue: (92/255.0), alpha: 1.0)
     
+
 }
