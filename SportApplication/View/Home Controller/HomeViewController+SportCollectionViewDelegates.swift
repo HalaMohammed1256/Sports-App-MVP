@@ -21,7 +21,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             
         }else{
 
-            numberOfItems = sportsArray.count
+            numberOfItems = sportsPresenter?.sports?.count ?? 0
 
         }
         
@@ -44,9 +44,9 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             
         }else{
 
-            cell.sportImageView.sd_setImage(with: URL(string:  sportsArray[indexPath.row].strSportThumb!), placeholderImage: UIImage(named: "no_internet"))
+            cell.sportImageView.sd_setImage(with: URL(string:  (sportsPresenter?.sports? [indexPath.row].strSportThumb!)!), placeholderImage: UIImage(named: "no_internet"))
 
-            cell.sportNameLabel.text = sportsArray[indexPath.row].strSport
+            cell.sportNameLabel.text = sportsPresenter?.sports[indexPath.row].strSport
             cell.sportNameLabel.font = UIFont(name: "Merriweather-Black", size: 15)
             cell.sportNameLabel.textColor = .black
         }
@@ -82,8 +82,21 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         // sequa
         
     }
+}
+extension HomeViewController : SportsView{
     
+//    func startAnimating() {
+//        print("start animating")
+//    }
+//
+//    func stopAnimating() {
+//        print("Stop animating")
+//    }
     
-    
-    
+    func reloadCollectionView() {
+        DispatchQueue.main.async {
+            self.sportsCollectionView.reloadData()
+        }
+    }
+
 }

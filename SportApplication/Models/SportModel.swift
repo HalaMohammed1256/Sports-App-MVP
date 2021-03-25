@@ -8,7 +8,7 @@
 import Foundation
 
 // for dictionary in sports array
-struct Sports : Codable {
+struct Sport : Codable {
     let idSport : String?
     let strSport : String?
     let strFormat : String?
@@ -33,7 +33,7 @@ struct Sports : Codable {
 
 // for array
 struct SportsModel : Codable {
-    let sports : [Sports]?
+    let sports : [Sport]?
 
     enum CodingKeys: String, CodingKey {
 

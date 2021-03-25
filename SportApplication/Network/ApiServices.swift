@@ -21,7 +21,7 @@ class ApiServices{
             switch response.result{
             case .success( _):
                     
-                    guard let responseData = response.data else{
+                guard let responseData = response.data else{
                         print("error in fetch data")
                         return
                     }
@@ -36,7 +36,6 @@ class ApiServices{
                     }catch let error{
                         
                         completion(nil, error)
-                        
                     }
                     
                     

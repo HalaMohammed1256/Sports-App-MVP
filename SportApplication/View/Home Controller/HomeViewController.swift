@@ -8,31 +8,38 @@
 import UIKit
 import Reachability
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController{
 
     var mainColor = MainColor()
-    var sportsArray = [Sports]()
+//    var sportsArray : [Sport]()
+    var sportsPresenter : SportsPresenter?
+    
     
     
     //declare this property where it won't go out of scope relative to your listener
     let reachability = try! Reachability()
     
     // outlets
-    @IBOutlet weak var sportsCollectionView: UICollectionView!
-    
+    @IBOutlet weak var sportsCollectionView: UICollectionView!{
+        
+        didSet{
+            // collection view delegates
+            sportsCollectionView.delegate = self
+            sportsCollectionView.dataSource = self
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.backgroundColor = mainColor.backgroundColor
-        
-        // collection view delegets
-        sportsCollectionView.delegate = self
-        sportsCollectionView.dataSource = self
+        sportsPresenter = SportsPresenter(view: self)
         
         sportsCollectionView.layer.cornerRadius = 30
         
-        getSports()
+      //  getSports()
+        sportsPresenter?.getSports()
+
         
         do{
             try reachability.startNotifier()
@@ -44,11 +51,9 @@ class HomeViewController: UIViewController {
         
     }
     
-    
-    
-    
-    
-    func getSports() {
+}
+
+ /*   func getSports() {
 
         ApiServices.instance.getAllSportJsonData(url: ApiURls.allSports.rawValue) { (data: SportsModel?, error) in
 
@@ -68,8 +73,6 @@ class HomeViewController: UIViewController {
 
         }
 
-    }
+    }*/
     
-
     
-}

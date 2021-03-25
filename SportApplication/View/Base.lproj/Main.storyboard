@@ -91,7 +91,7 @@
             </objects>
             <point key="canvasLocation" x="-796" y="860"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="COG-sL-mDy">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="eUv-lz-IbP" customClass="HomeViewController" customModule="SportApplication" customModuleProvider="target" sceneMemberID="viewController">
@@ -160,7 +160,7 @@
                             <constraint firstItem="FOR-b5-t0r" firstAttribute="trailing" secondItem="Wb3-7W-wDF" secondAttribute="trailing" constant="16" id="vpD-iV-gJu"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" landscapeImage="house.fill" catalog="system" id="y62-WF-244"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="homekit" catalog="system" landscapeImage="house.fill" id="y62-WF-244"/>
                     <navigationItem key="navigationItem" id="w3W-vg-UW0"/>
                     <connections>
                         <outlet property="sportsCollectionView" destination="Wb3-7W-wDF" id="VX4-Sr-hLj"/>
@@ -193,6 +193,7 @@
     <resources>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="highlighter" catalog="system" width="128" height="119"/>
+        <image name="homekit" catalog="system" width="128" height="106"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
