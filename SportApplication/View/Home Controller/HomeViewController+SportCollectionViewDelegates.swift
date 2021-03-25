@@ -33,14 +33,18 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         
         let cell = sportsCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SportCollectionViewCell.self), for: indexPath) as! SportCollectionViewCell
         
+        cell.sportImageView.layer.cornerRadius = 15
         
         if reachability.connection == .unavailable{
+            
+            designView.isHidden = true
             
             cell.sportImageView.image = UIImage(named: "no_internet4")
             cell.sportImageView.contentMode = .scaleToFill
             cell.sportNameLabel.text = "No Internet Connection!"
             cell.sportNameLabel.font = UIFont(name: "Merriweather-Black", size: 24)
-        cell.sportNameLabel.textColor = mainColor.noInternetColor
+            cell.sportNameLabel.textColor = MainColor.instance.noInternetColor
+            cell.sportNameLabel.font = UIFont(name: "Merriweather-Black", size: collectionView.frame.width*0.07)
             
         }else{
 
@@ -49,6 +53,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             cell.sportNameLabel.text = sportsPresenter?.sports?[indexPath.row].strSport
             cell.sportNameLabel.font = UIFont(name: "Merriweather-Black", size: 15)
             cell.sportNameLabel.textColor = .black
+            cell.sportNameLabel.font = UIFont(name: "Merriweather-Black", size: collectionView.frame.width*0.04)
         }
         
         return cell
@@ -65,7 +70,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             
         }else{
 
-            return CGSize(width: (collectionView.frame.width/2.1), height: collectionView.frame.width/2)
+            return CGSize(width: (collectionView.frame.width/2.1), height: collectionView.frame.width/1.85)
 
         }
 
@@ -80,15 +85,3 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         
     }
 }
-//extension HomeViewController : SportsView{
-//    
-////    func startAnimating() {
-////        print("start animating")
-////    }
-////
-////    func stopAnimating() {
-////        print("Stop animating")
-////    }
-//   
-//
-//}
