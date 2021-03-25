@@ -9,6 +9,8 @@ import UIKit
 
 struct MainColor{
     
+    var ViewColor : UIColor = UIColor(red: (46/255.0), green: (139/255.0), blue: (87/255.0), alpha: 1.0)
+    
     var backgroundColor : UIColor = UIColor(red: (246/255.0), green: (246/255.0), blue: (246/255.0), alpha: 1.0)
     
     var primaryColor : UIColor = UIColor(red: (52/255.0), green: (168/255.0), blue: (83/255.0), alpha: 1.0)

@@ -33,21 +33,27 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         
         let cell = sportsCollectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SportCollectionViewCell.self), for: indexPath) as! SportCollectionViewCell
         
+        cell.sportImageView.layer.cornerRadius = 15
+        
         
         if reachability.connection == .unavailable{
+            
+            designView.isHidden = true
             
             cell.sportImageView.image = UIImage(named: "no_internet4")
             cell.sportImageView.contentMode = .scaleToFill
             cell.sportNameLabel.text = "No Internet Connection!"
-            cell.sportNameLabel.font = UIFont(name: "Merriweather-Black", size: 24)
+            cell.sportNameLabel.font = UIFont(name: "Merriweather-Black", size: collectionView.frame.width*0.07)//24
         cell.sportNameLabel.textColor = mainColor.noInternetColor
             
         }else{
 
             cell.sportImageView.sd_setImage(with: URL(string:  sportsArray[indexPath.row].strSportThumb!), placeholderImage: UIImage(named: "no_internet"))
 
+            
             cell.sportNameLabel.text = sportsArray[indexPath.row].strSport
-            cell.sportNameLabel.font = UIFont(name: "Merriweather-Black", size: 15)
+//            cell.sportNameLabel.font = UIFont(name: "Merriweather-Black", size: 15)
+            cell.sportNameLabel.font = UIFont(name: "Merriweather-Black", size: collectionView.frame.width*0.04)//24
             cell.sportNameLabel.textColor = .black
         }
         

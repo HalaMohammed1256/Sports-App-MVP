@@ -10,7 +10,7 @@ import Reachability
 
 class HomeViewController: UIViewController {
 
-    var mainColor = MainColor()
+    let mainColor = MainColor()
     var sportsArray = [Sports]()
     
     
@@ -19,18 +19,20 @@ class HomeViewController: UIViewController {
     
     // outlets
     @IBOutlet weak var sportsCollectionView: UICollectionView!
-    
+    @IBOutlet weak var designView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = mainColor.backgroundColor
+        designView.backgroundColor = mainColor.ViewColor
+        
+        sportsCollectionView.layer.cornerRadius = 15
         
         // collection view delegets
         sportsCollectionView.delegate = self
         sportsCollectionView.dataSource = self
         
-        sportsCollectionView.layer.cornerRadius = 30
+//        sportsCollectionView.layer.cornerRadius = 30
         
         getSports()
         
