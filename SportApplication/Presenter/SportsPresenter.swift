@@ -16,42 +16,48 @@ protocol SportsView : class {
 
 protocol SportsViewPresenter {
     init(view : SportsView)
+    var sports : [Sport]?{get set}
     func getSports()
 }
 
 class SportsPresenter: SportsViewPresenter {
+
+    var sports: [Sport]?{
+        didSet{
+            self.view?.reloadCollectionView()
+        }
+    }
     
     weak var view : SportsView?
-    let group = DispatchGroup()
-
     
     required init(view: SportsView) {
-        self.view? = view
-    }
-
-    var sports : [Sport]!{
-        didSet{
-            view?.reloadCollectionView()
-        }
+        self.view = view
     }
     
     func getSports() {
         
-        //view?.startAnimating()
         ApiServices.instance.getAllSportJsonData(url: ApiURls.allSports.rawValue) { (data: SportsModel?, error) in
-
-            self.group.enter()
-            
-            if error != nil || data == nil{
-
-                print("Error \(error!.localizedDescription)")
-
-            }else if let sportsData = data{
-                
-             self.sports = (sportsData.sports)!
-//              self.view?.reloadCollectionView()
+                    
+            guard let data = data, error == nil else{
+                return
             }
-           // self.view?.stopAnimating()
-    }
+            self.sports = (data.sports)!
+
+        
+//        //view?.startAnimating()
+//        let apiService = ApiServices()
+//
+//        apiService.getAllSportJsonData(url: ApiURls.allSports.rawValue) { (data: SportsModel?, ,error) in
+//
+//            guard let data = data , error == nil else{
+//                return
+//            }
+//            self.sports = (data.sports)!
+//
+//            }
+//           // self.view?.stopAnimating()
+//    }
 }
+}
+
 }

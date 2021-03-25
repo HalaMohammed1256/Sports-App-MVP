@@ -145,10 +145,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="eUv-lz-IbP" id="AXr-6J-SFR"/>
-                                    <outlet property="delegate" destination="eUv-lz-IbP" id="Gyo-Pd-Ax5"/>
-                                </connections>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FOR-b5-t0r"/>

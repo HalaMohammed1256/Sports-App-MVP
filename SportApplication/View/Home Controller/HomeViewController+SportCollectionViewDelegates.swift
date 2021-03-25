@@ -44,15 +44,12 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             
         }else{
 
-            cell.sportImageView.sd_setImage(with: URL(string:  (sportsPresenter?.sports? [indexPath.row].strSportThumb!)!), placeholderImage: UIImage(named: "no_internet"))
+            cell.sportImageView.sd_setImage(with: URL(string:  (sportsPresenter?.sports?[indexPath.row].strSportThumb!)!), placeholderImage: UIImage(named: "no_internet"))
 
-            cell.sportNameLabel.text = sportsPresenter?.sports[indexPath.row].strSport
+            cell.sportNameLabel.text = sportsPresenter?.sports?[indexPath.row].strSport
             cell.sportNameLabel.font = UIFont(name: "Merriweather-Black", size: 15)
             cell.sportNameLabel.textColor = .black
         }
-        
-        
-        
         
         return cell
     }
@@ -83,20 +80,15 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         
     }
 }
-extension HomeViewController : SportsView{
-    
-//    func startAnimating() {
-//        print("start animating")
-//    }
+//extension HomeViewController : SportsView{
+//    
+////    func startAnimating() {
+////        print("start animating")
+////    }
+////
+////    func stopAnimating() {
+////        print("Stop animating")
+////    }
+//   
 //
-//    func stopAnimating() {
-//        print("Stop animating")
-//    }
-    
-    func reloadCollectionView() {
-        DispatchQueue.main.async {
-            self.sportsCollectionView.reloadData()
-        }
-    }
-
-}
+//}

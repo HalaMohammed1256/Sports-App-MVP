@@ -8,11 +8,11 @@
 import UIKit
 import Reachability
 
-class HomeViewController: UIViewController{
+class HomeViewController: UIViewController, SportsView{
 
     var mainColor = MainColor()
 //    var sportsArray : [Sport]()
-    var sportsPresenter : SportsPresenter?
+    var sportsPresenter : SportsViewPresenter?
     
     
     
@@ -38,8 +38,8 @@ class HomeViewController: UIViewController{
         sportsCollectionView.layer.cornerRadius = 30
         
       //  getSports()
-        sportsPresenter?.getSports()
-
+   
+      sportsPresenter?.getSports()
         
         do{
             try reachability.startNotifier()
@@ -51,7 +51,18 @@ class HomeViewController: UIViewController{
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+  
+
+    }
+    
+    func reloadCollectionView() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            self.sportsCollectionView.reloadData()
+        })
+    }
 }
+
 
  /*   func getSports() {
 
