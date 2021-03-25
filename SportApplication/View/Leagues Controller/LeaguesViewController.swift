@@ -8,11 +8,20 @@
 import UIKit
 
 class LeaguesViewController: UIViewController {
+    
+    
+    @IBOutlet weak var LeagueViewTableView: UITableView!{
+        didSet{
+            LeagueViewTableView.delegate = self
+            LeagueViewTableView.dataSource = self
+        }
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        view.backgroundColor = MainColor.instance.backgroundColor
     }
     
 

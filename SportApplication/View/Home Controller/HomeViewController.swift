@@ -10,8 +10,6 @@ import Reachability
 
 class HomeViewController: UIViewController, SportsView{
 
-    var mainColor = MainColor()
-//    var sportsArray : [Sport]()
     var sportsPresenter : SportsViewPresenter?
     
     
@@ -20,6 +18,7 @@ class HomeViewController: UIViewController, SportsView{
     let reachability = try! Reachability()
     
     // outlets
+    @IBOutlet weak var designView: UIView!
     @IBOutlet weak var sportsCollectionView: UICollectionView!{
         
         didSet{
@@ -32,10 +31,10 @@ class HomeViewController: UIViewController, SportsView{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = mainColor.backgroundColor
+        self.view.backgroundColor = MainColor.instance.backgroundColor
         sportsPresenter = SportsPresenter(view: self)
-        
-        sportsCollectionView.layer.cornerRadius = 30
+        designView.backgroundColor = MainColor.instance.ViewColor
+        sportsCollectionView.layer.cornerRadius = 15
         
       //  getSports()
    
