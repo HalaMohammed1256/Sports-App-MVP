@@ -7,37 +7,24 @@
 
 import Foundation
 import UIKit
-
+import SDWebImage
 
 extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return leaguesPresenter?.filteredLeagues?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = LeagueViewTableView.dequeueReusableCell(withIdentifier: String(describing: LeagueViewTableViewCell.self), for: indexPath) as? LeagueViewTableViewCell else {
+        guard let leagueCell = tableView.dequeueReusableCell(withIdentifier: "LeagueViewTableViewCell") as? LeagueViewTableViewCell else {
             return UITableViewCell()
         }
-        
-        cell.leaugeImageView.image = UIImage(named: "instagram")
-        cell.LeagueNameLabel.text = "English League Championship"
-//        cell.accessoryView = 
-        
-        return cell
+        leagueCell.LeagueNameLabel.text = leaguesPresenter?.filteredLeagues![indexPath.row].strLeague
+      
+        //  leagueCell.leaugueImageView.sd_setImage(with: URL(string:  (leaguesPresenter?.leaguesDetails?[indexPath.row].strBadge) ?? ""), placeholderImage: UIImage(named: "no_internet"))
+        return leagueCell
         
     }
-    
-    
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return tableView.frame.height/6.4
-        
-        
-    }
-    
-    
     
 }

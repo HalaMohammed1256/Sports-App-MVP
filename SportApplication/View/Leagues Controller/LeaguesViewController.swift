@@ -9,6 +9,8 @@ import UIKit
 
 class LeaguesViewController: UIViewController {
     
+    var leaguesPresenter : LeaguesPresenter?
+    var sport : String?
     
     @IBOutlet weak var LeagueViewTableView: UITableView!{
         didSet{
@@ -21,18 +23,21 @@ class LeaguesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        leaguesPresenter = LeaguesPresenter(view: self)
         view.backgroundColor = MainColor.instance.backgroundColor
+       // leaguesPresenter?.getLeagues(id:"4329")
+        leaguesPresenter?.getAllLeagues(sport: "Baseball")
+    }
+
+}
+
+extension LeaguesViewController : LeaguesView{
+    func reloadTable() {
+        DispatchQueue.main.async {
+            self.LeagueViewTableView.reloadData()
+        }
+       
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

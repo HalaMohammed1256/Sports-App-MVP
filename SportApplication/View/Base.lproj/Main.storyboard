@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vP4-TU-lwR">
-                                <rect key="frame" x="16" y="75" width="382" height="787"/>
+                                <rect key="frame" x="16" y="119" width="382" height="694"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeagueViewTableViewCell" rowHeight="111" id="zRK-jb-17O" customClass="LeagueViewTableViewCell" customModule="SportApplication" customModuleProvider="target">
@@ -67,7 +67,7 @@
                                         <color key="backgroundColor" red="0.87450980389999999" green="0.35686274509999999" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="LeagueNameLabel" destination="xmM-7Z-mYH" id="a1q-cR-zzj"/>
-                                            <outlet property="leaugeImageView" destination="IxB-t0-8jb" id="fnO-hd-ohm"/>
+                                            <outlet property="leaugueImageView" destination="IxB-t0-8jb" id="1mD-a2-xEb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -82,6 +82,7 @@
                             <constraint firstItem="vP4-TU-lwR" firstAttribute="leading" secondItem="PIp-u5-ytE" secondAttribute="leading" constant="16" id="fVq-AT-3WK"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="qc3-zO-K22"/>
                     <connections>
                         <outlet property="LeagueViewTableView" destination="vP4-TU-lwR" id="Ggk-te-9Me"/>
                     </connections>
@@ -177,7 +178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-17" y="860"/>
+            <point key="canvasLocation" x="892.75362318840587" y="859.82142857142856"/>
         </scene>
         <!--Chat-->
         <scene sceneID="qqB-FK-uLQ">
@@ -190,12 +191,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Chat" image="highlighter" catalog="system" id="MrQ-F1-W9i"/>
+                    <navigationItem key="navigationItem" id="3oe-4d-WTa"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1zZ-1M-n9P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-796" y="860"/>
+            <point key="canvasLocation" x="113.04347826086958" y="859.82142857142856"/>
         </scene>
-        <!--Home-->
+        <!--Home View Controller-->
         <scene sceneID="COG-sL-mDy">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="eUv-lz-IbP" customClass="HomeViewController" customModule="SportApplication" customModuleProvider="target" sceneMemberID="viewController">
@@ -204,7 +206,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lw8-2z-HdS">
-                                <rect key="frame" x="0.0" y="44" width="414" height="251"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="251"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GMB-0h-IHA">
                                 <rect key="frame" x="32" y="240" width="350" height="573"/>
@@ -267,16 +269,16 @@
                             <constraint firstItem="lw8-2z-HdS" firstAttribute="height" secondItem="zNn-bI-zXI" secondAttribute="height" multiplier="0.28" id="xmQ-Dk-Yvy"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="homekit" catalog="system" landscapeImage="house.fill" id="y62-WF-244"/>
                     <navigationItem key="navigationItem" id="w3W-vg-UW0"/>
                     <connections>
                         <outlet property="designView" destination="lw8-2z-HdS" id="pqO-So-f9l"/>
                         <outlet property="sportsCollectionView" destination="GMB-0h-IHA" id="nZx-lX-yIv"/>
+                        <segue destination="2p4-fj-QWl" kind="show" identifier="leagues" id="hJ5-0E-meY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nyK-Gf-I7n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1539.1304347826087" y="860.49107142857144"/>
+            <point key="canvasLocation" x="-628.98550724637687" y="860.49107142857144"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hso-cs-R7A">
@@ -288,7 +290,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="eUv-lz-IbP" kind="relationship" relationship="viewControllers" id="46C-di-Xvf"/>
+                        <segue destination="7it-Cb-hzy" kind="relationship" relationship="viewControllers" id="46C-di-Xvf"/>
                         <segue destination="j0I-X5-DJc" kind="relationship" relationship="viewControllers" id="cCl-F5-rJx"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="usN-x8-HMq"/>
                     </connections>
@@ -296,6 +298,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vZy-cv-mkQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1171" y="32"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="yHO-hU-Asq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7it-Cb-hzy" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="homekit" catalog="system" landscapeImage="house.fill" id="y62-WF-244"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="flB-jT-SIh">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eUv-lz-IbP" kind="relationship" relationship="rootViewController" id="1Zp-9F-7vh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wXK-5w-XPn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1539.1304347826087" y="860.49107142857144"/>
         </scene>
     </scenes>
     <resources>

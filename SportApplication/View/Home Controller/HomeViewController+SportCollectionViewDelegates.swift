@@ -80,6 +80,10 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         
         let leaguesView = self.storyboard?.instantiateViewController(identifier: String(describing: LeaguesViewController.self)) as! LeaguesViewController
         
+        leaguesView.sport =  self.sportsPresenter?.sports?[indexPath.row].strSport
+
+   
+        performSegue(withIdentifier: "leagues", sender: self)
         
         // sequa
         
