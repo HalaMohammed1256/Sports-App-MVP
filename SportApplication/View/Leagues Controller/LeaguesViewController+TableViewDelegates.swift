@@ -21,10 +21,14 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
             return UITableViewCell()
         }
         leagueCell.LeagueNameLabel.text = leaguesPresenter?.filteredLeagues![indexPath.row].strLeague
-      
+        leagueCell.leaugueImageView.layer.cornerRadius = 12
         //  leagueCell.leaugueImageView.sd_setImage(with: URL(string:  (leaguesPresenter?.leaguesDetails?[indexPath.row].strBadge) ?? ""), placeholderImage: UIImage(named: "no_internet"))
         return leagueCell
         
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return 1
+    }
 }

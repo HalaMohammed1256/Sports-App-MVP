@@ -12,6 +12,7 @@ class LeaguesViewController: UIViewController {
     var leaguesPresenter : LeaguesPresenter?
     var sport : String?
     
+    
     @IBOutlet weak var LeagueViewTableView: UITableView!{
         didSet{
             LeagueViewTableView.delegate = self
@@ -26,7 +27,7 @@ class LeaguesViewController: UIViewController {
         leaguesPresenter = LeaguesPresenter(view: self)
         view.backgroundColor = MainColor.instance.backgroundColor
        // leaguesPresenter?.getLeagues(id:"4329")
-        leaguesPresenter?.getAllLeagues(sport: "Baseball")
+        leaguesPresenter?.getAllLeagues(sport: sport ?? "")
     }
 
 }

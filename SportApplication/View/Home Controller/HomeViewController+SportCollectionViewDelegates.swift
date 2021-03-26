@@ -11,6 +11,7 @@ import SDWebImage
 
 extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
+   
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         var numberOfItems = 0
@@ -77,15 +78,18 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedIndex = indexPath.row
         
-        let leaguesView = self.storyboard?.instantiateViewController(identifier: String(describing: LeaguesViewController.self)) as! LeaguesViewController
-        
-        leaguesView.sport =  self.sportsPresenter?.sports?[indexPath.row].strSport
-
-   
         performSegue(withIdentifier: "leagues", sender: self)
         
-        // sequa
+       
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? LeaguesViewController{
+            
+            destination.sport =  self.sportsPresenter?.sports?[selectedIndex!].strSport
+        }
     }
 }

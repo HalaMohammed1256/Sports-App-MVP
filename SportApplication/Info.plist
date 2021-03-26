@@ -47,7 +47,11 @@
 	<string>Main</string>
 	<key>Font Provided by application</key>
 	<array>
+		<string>JF-Flat-Regular.ttf</string>
 		<string>Merriweather-Black.ttf</string>
+		<string>Ubuntu-Bold.ttf</string>
+		<string>Ubuntu-Medium.ttf</string>
+		<string>Ubuntu-Light.ttf</string>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>

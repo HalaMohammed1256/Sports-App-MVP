@@ -11,9 +11,9 @@ import Reachability
 class HomeViewController: UIViewController, SportsView{
 
     var sportsPresenter : SportsViewPresenter?
+    var selectedIndex : Int?
     
-    
-    
+
     //declare this property where it won't go out of scope relative to your listener
     let reachability = try! Reachability()
     

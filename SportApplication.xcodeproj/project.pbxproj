@@ -35,6 +35,10 @@
 		88078073260D61AB00432655 /* LeguesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88078072260D61AB00432655 /* LeguesPresenter.swift */; };
 		884D8150260DFDC1003C7442 /* Legue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884D814F260DFDC1003C7442 /* Legue.swift */; };
 		884D815E260E2733003C7442 /* LegueDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884D815D260E2733003C7442 /* LegueDetails.swift */; };
+		884D817A260EA4D4003C7442 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 884D8177260EA4D4003C7442 /* Ubuntu-Medium.ttf */; };
+		884D817B260EA4D4003C7442 /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 884D8178260EA4D4003C7442 /* Ubuntu-Light.ttf */; };
+		884D817C260EA4D4003C7442 /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 884D8179260EA4D4003C7442 /* Ubuntu-Bold.ttf */; };
+		884D8189260EA7F0003C7442 /* JF-Flat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 884D8188260EA7F0003C7442 /* JF-Flat-Regular.ttf */; };
 		BA1A55C13D1FDCCA0AA38500 /* Pods_SportApplication_SportApplicationUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED073738CD6884E8F4BBDB99 /* Pods_SportApplication_SportApplicationUITests.framework */; };
 		E7C143970F387972828C05EB /* Pods_SportApplicationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56DDBC6AB592D4CBD7489233 /* Pods_SportApplicationTests.framework */; };
 /* End PBXBuildFile section */
@@ -97,6 +101,10 @@
 		88078072260D61AB00432655 /* LeguesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeguesPresenter.swift; sourceTree = "<group>"; };
 		884D814F260DFDC1003C7442 /* Legue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Legue.swift; sourceTree = "<group>"; };
 		884D815D260E2733003C7442 /* LegueDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegueDetails.swift; sourceTree = "<group>"; };
+		884D8177260EA4D4003C7442 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
+		884D8178260EA4D4003C7442 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Light.ttf"; sourceTree = "<group>"; };
+		884D8179260EA4D4003C7442 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
+		884D8188260EA7F0003C7442 /* JF-Flat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JF-Flat-Regular.ttf"; sourceTree = "<group>"; };
 		ED073738CD6884E8F4BBDB99 /* Pods_SportApplication_SportApplicationUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportApplication_SportApplicationUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF0FC751B9747CF1D0338D77 /* Pods-SportApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportApplication.debug.xcconfig"; path = "Target Support Files/Pods-SportApplication/Pods-SportApplication.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -273,6 +281,10 @@
 		2BAF9FC0260B5B01001E1A91 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				884D8188260EA7F0003C7442 /* JF-Flat-Regular.ttf */,
+				884D8179260EA4D4003C7442 /* Ubuntu-Bold.ttf */,
+				884D8178260EA4D4003C7442 /* Ubuntu-Light.ttf */,
+				884D8177260EA4D4003C7442 /* Ubuntu-Medium.ttf */,
 				2B2FFDCC260ADA3900B98699 /* Merriweather-Black.ttf */,
 			);
 			path = Fonts;
@@ -462,8 +474,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B2FFDCD260ADAA900B98699 /* Merriweather-Black.ttf in Resources */,
+				884D817A260EA4D4003C7442 /* Ubuntu-Medium.ttf in Resources */,
+				884D8189260EA7F0003C7442 /* JF-Flat-Regular.ttf in Resources */,
 				2B870D952606512200C47105 /* LaunchScreen.storyboard in Resources */,
 				2B870D922606512200C47105 /* Assets.xcassets in Resources */,
+				884D817C260EA4D4003C7442 /* Ubuntu-Bold.ttf in Resources */,
+				884D817B260EA4D4003C7442 /* Ubuntu-Light.ttf in Resources */,
 				2B870D8D2606512200C47105 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
