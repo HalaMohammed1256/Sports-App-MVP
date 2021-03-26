@@ -17,7 +17,24 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return UITableViewCell()
+        guard let cell = LeagueViewTableView.dequeueReusableCell(withIdentifier: String(describing: LeagueViewTableViewCell.self), for: indexPath) as? LeagueViewTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        cell.leaugeImageView.image = UIImage(named: "instagram")
+        cell.LeagueNameLabel.text = "English League Championship"
+//        cell.accessoryView = 
+        
+        return cell
+        
+    }
+    
+    
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return tableView.frame.height/6.4
+        
         
     }
     
