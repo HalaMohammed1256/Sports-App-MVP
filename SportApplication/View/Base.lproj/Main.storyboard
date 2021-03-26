@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dtE-ga-sgJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2p4-fj-QWl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -26,43 +26,45 @@
                                 <rect key="frame" x="16" y="75" width="382" height="787"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeagueViewTableViewCell" rowHeight="161" id="zRK-jb-17O" customClass="LeagueViewTableViewCell" customModule="SportApplication" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="382" height="161"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeagueViewTableViewCell" rowHeight="111" id="zRK-jb-17O" customClass="LeagueViewTableViewCell" customModule="SportApplication" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="382" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zRK-jb-17O" id="Tio-6i-Fi2">
-                                            <rect key="frame" x="0.0" y="0.0" width="382" height="161"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="111"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IxB-t0-8jb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="133.5" height="161"/>
+                                                    <rect key="frame" x="8" y="8" width="107" height="95"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmM-7Z-mYH">
-                                                    <rect key="frame" x="141.5" y="61" width="192" height="39"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Label Label Label Label Label Label Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmM-7Z-mYH">
+                                                    <rect key="frame" x="119" y="45.5" width="217" height="20.5"/>
+                                                    <color key="backgroundColor" red="1" green="0.52120530610000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fij-Fa-CEi">
-                                                    <rect key="frame" x="347.5" y="61" width="34.5" height="39"/>
+                                                    <rect key="frame" x="344" y="39" width="30" height="33"/>
                                                     <state key="normal" image="youtube"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Fij-Fa-CEi" firstAttribute="height" secondItem="Tio-6i-Fi2" secondAttribute="height" multiplier="0.242236" id="0e3-4Q-Ha4"/>
-                                                <constraint firstItem="xmM-7Z-mYH" firstAttribute="leading" secondItem="IxB-t0-8jb" secondAttribute="trailing" constant="8" symbolic="YES" id="91M-1Z-rFE"/>
-                                                <constraint firstItem="IxB-t0-8jb" firstAttribute="leading" secondItem="Tio-6i-Fi2" secondAttribute="leading" id="98K-KI-hPB"/>
-                                                <constraint firstItem="xmM-7Z-mYH" firstAttribute="height" secondItem="Tio-6i-Fi2" secondAttribute="height" multiplier="0.242236" id="KmO-q3-gby"/>
-                                                <constraint firstAttribute="bottom" secondItem="IxB-t0-8jb" secondAttribute="bottom" id="MXW-Qq-HfQ"/>
-                                                <constraint firstItem="Fij-Fa-CEi" firstAttribute="top" secondItem="Tio-6i-Fi2" secondAttribute="top" constant="61" id="XAJ-jd-wa6"/>
-                                                <constraint firstItem="IxB-t0-8jb" firstAttribute="height" secondItem="Tio-6i-Fi2" secondAttribute="height" id="XwT-q9-1HV"/>
-                                                <constraint firstItem="IxB-t0-8jb" firstAttribute="top" secondItem="Tio-6i-Fi2" secondAttribute="top" id="b1G-k1-Av7"/>
-                                                <constraint firstItem="Fij-Fa-CEi" firstAttribute="width" secondItem="Tio-6i-Fi2" secondAttribute="width" multiplier="0.09" id="bkZ-3E-wyG"/>
-                                                <constraint firstItem="xmM-7Z-mYH" firstAttribute="top" secondItem="Tio-6i-Fi2" secondAttribute="top" constant="61" id="htx-py-65w"/>
-                                                <constraint firstItem="IxB-t0-8jb" firstAttribute="width" secondItem="Tio-6i-Fi2" secondAttribute="width" multiplier="0.35" id="iEK-3e-iec"/>
-                                                <constraint firstItem="xmM-7Z-mYH" firstAttribute="width" secondItem="Tio-6i-Fi2" secondAttribute="width" multiplier="0.502415" id="ofs-xA-lJ6"/>
-                                                <constraint firstAttribute="trailing" secondItem="Fij-Fa-CEi" secondAttribute="trailing" id="tcG-zy-xHY"/>
+                                                <constraint firstItem="Fij-Fa-CEi" firstAttribute="leading" secondItem="xmM-7Z-mYH" secondAttribute="trailing" constant="8" symbolic="YES" id="3Hd-K4-5Rj"/>
+                                                <constraint firstItem="Fij-Fa-CEi" firstAttribute="centerY" secondItem="Tio-6i-Fi2" secondAttribute="centerY" id="6K1-mv-pub"/>
+                                                <constraint firstItem="IxB-t0-8jb" firstAttribute="leading" secondItem="Tio-6i-Fi2" secondAttribute="leading" constant="8" id="98K-KI-hPB"/>
+                                                <constraint firstItem="xmM-7Z-mYH" firstAttribute="centerY" secondItem="Tio-6i-Fi2" secondAttribute="centerY" id="G4L-r9-rA0"/>
+                                                <constraint firstItem="Fij-Fa-CEi" firstAttribute="height" secondItem="Tio-6i-Fi2" secondAttribute="height" multiplier="0.3" id="JGs-9b-4CL"/>
+                                                <constraint firstItem="IxB-t0-8jb" firstAttribute="top" secondItem="Tio-6i-Fi2" secondAttribute="top" constant="8" id="b1G-k1-Av7"/>
+                                                <constraint firstItem="xmM-7Z-mYH" firstAttribute="leading" secondItem="IxB-t0-8jb" secondAttribute="trailing" constant="4" id="c88-Nm-1bh"/>
+                                                <constraint firstItem="Fij-Fa-CEi" firstAttribute="width" secondItem="Tio-6i-Fi2" secondAttribute="width" multiplier="0.078534" id="cnn-mO-pz6"/>
+                                                <constraint firstAttribute="bottom" secondItem="IxB-t0-8jb" secondAttribute="bottom" constant="8" id="d8W-iu-liy"/>
+                                                <constraint firstAttribute="trailing" secondItem="Fij-Fa-CEi" secondAttribute="trailing" constant="8" id="goc-Hl-C9w"/>
+                                                <constraint firstItem="IxB-t0-8jb" firstAttribute="width" secondItem="Tio-6i-Fi2" secondAttribute="width" multiplier="0.28" id="iEK-3e-iec"/>
+                                                <constraint firstAttribute="trailing" secondItem="xmM-7Z-mYH" secondAttribute="trailing" constant="46" id="muW-vw-Uh4"/>
+                                                <constraint firstItem="IxB-t0-8jb" firstAttribute="height" secondItem="Tio-6i-Fi2" secondAttribute="height" multiplier="0.855856" id="r23-28-j57"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.87450980389999999" green="0.35686274509999999" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="LeagueNameLabel" destination="xmM-7Z-mYH" id="a1q-cR-zzj"/>
                                             <outlet property="leaugeImageView" destination="IxB-t0-8jb" id="fnO-hd-ohm"/>
@@ -86,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="69Z-RV-fpa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="554" y="31"/>
+            <point key="canvasLocation" x="553.62318840579712" y="30.803571428571427"/>
         </scene>
         <!--Leagues Details View Controller-->
         <scene sceneID="xom-5a-LO9">
