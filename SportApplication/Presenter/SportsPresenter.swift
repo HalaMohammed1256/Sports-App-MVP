@@ -36,27 +36,12 @@ class SportsPresenter: SportsViewPresenter {
     
     func getSports() {
         
-        ApiServices.instance.getAllSportJsonData(url: ApiURls.allSports.rawValue) { (data: SportsModel?, error) in
+        ApiServices.instance.getAllSportJsonData(url: ApiURLs.allSports.rawValue) { (data: SportsModel?, error) in
                     
             guard let data = data, error == nil else{
                 return
             }
             self.sports = (data.sports)!
-
-        
-//        //view?.startAnimating()
-//        let apiService = ApiServices()
-//
-//        apiService.getAllSportJsonData(url: ApiURls.allSports.rawValue) { (data: SportsModel?, ,error) in
-//
-//            guard let data = data , error == nil else{
-//                return
-//            }
-//            self.sports = (data.sports)!
-//
-//            }
-//           // self.view?.stopAnimating()
-//    }
 }
 }
 

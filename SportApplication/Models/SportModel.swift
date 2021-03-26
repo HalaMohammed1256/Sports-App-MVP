@@ -26,10 +26,7 @@ struct Sport : Codable {
         case strSportDescription = "strSportDescription"
     }
 
-
-
 }
-
 
 // for array
 struct SportsModel : Codable {
@@ -39,6 +36,4 @@ struct SportsModel : Codable {
 
         case sports = "sports"
     }
-
-
 }

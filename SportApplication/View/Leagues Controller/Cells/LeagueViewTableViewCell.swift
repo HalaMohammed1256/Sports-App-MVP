@@ -10,7 +10,7 @@ import UIKit
 class LeagueViewTableViewCell: UITableViewCell {
 
     
-    @IBOutlet weak var leaugeImageView: UIImageView!
+    @IBOutlet weak var leaugueImageView: UIImageView!
     @IBOutlet weak var LeagueNameLabel: UILabel!
     
     override func awakeFromNib() {
