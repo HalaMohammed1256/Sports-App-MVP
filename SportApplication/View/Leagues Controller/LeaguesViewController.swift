@@ -27,7 +27,7 @@ class LeaguesViewController: UIViewController {
         leaguesPresenter = LeaguesPresenter(view: self)
         view.backgroundColor = MainColor.instance.backgroundColor
        // leaguesPresenter?.getLeagues(id:"4329")
-        leaguesPresenter?.getAllLeagues(sport: sport ?? "")
+        leaguesPresenter?.getAllFilteredLeagues(sport: sport ?? "")
     }
 
 }

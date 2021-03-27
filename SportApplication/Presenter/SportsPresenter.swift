@@ -36,7 +36,7 @@ class SportsPresenter: SportsViewPresenter {
     
     func getSports() {
         
-        ApiServices.instance.getAllSportJsonData(url: ApiURLs.allSports.rawValue) { (data: SportsModel?, error) in
+        ApiServices.instance.getResponses(url: ApiURLs.allSports.rawValue) { (data: SportsModel?, error) in
                     
             guard let data = data, error == nil else{
                 return
@@ -44,5 +44,4 @@ class SportsPresenter: SportsViewPresenter {
             self.sports = (data.sports)!
 }
 }
-
 }

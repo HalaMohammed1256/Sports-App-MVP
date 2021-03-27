@@ -9,11 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="JF-Flat-Regular.ttf">
-            <string>JFFlat-Regular</string>
-        </array>
         <array key="Merriweather-Black.ttf">
             <string>Merriweather-Black</string>
+        </array>
+        <array key="Ubuntu-Medium.ttf">
+            <string>Ubuntu-Medium</string>
         </array>
     </customFonts>
     <scenes>
@@ -40,8 +40,8 @@
                                                     <rect key="frame" x="8" y="8" width="107" height="95"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Label Label Label Label Label Label Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmM-7Z-mYH">
-                                                    <rect key="frame" x="119" y="46" width="217" height="19"/>
-                                                    <fontDescription key="fontDescription" name="JFFlat-Regular" family="JF Flat" pointSize="18"/>
+                                                    <rect key="frame" x="119" y="45.5" width="217" height="20.5"/>
+                                                    <fontDescription key="fontDescription" name="Ubuntu-Medium" family="Ubuntu" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
