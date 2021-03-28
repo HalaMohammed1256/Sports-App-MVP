@@ -11,6 +11,7 @@ class LeaguesViewController: UIViewController {
     
     var leaguesPresenter : LeaguesPresenter?
     var sport : String?
+    var urlLink : String?
     
     
     @IBOutlet weak var LeagueViewTableView: UITableView!{

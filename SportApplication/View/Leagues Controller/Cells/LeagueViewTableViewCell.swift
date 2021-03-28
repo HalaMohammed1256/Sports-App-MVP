@@ -12,10 +12,15 @@ class LeagueViewTableViewCell: UITableViewCell {
     
     @IBOutlet weak var leaugueImageView: UIImageView!
     @IBOutlet weak var LeagueNameLabel: UILabel!
+    @IBOutlet weak var youtubeChannelIcon: UIButton!
+    
+    
+    var youtubeChannelAction: (() -> Void)?
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -28,5 +33,11 @@ class LeagueViewTableViewCell: UITableViewCell {
         super.layoutSubviews()
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0))
     }
+    
+    
+    @IBAction func youtubeChannelTapped(_ sender: Any) {
+        youtubeChannelAction?()
+    }
+    
 
 }
