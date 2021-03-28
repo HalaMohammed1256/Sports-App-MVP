@@ -23,6 +23,7 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
         leagueCell.LeagueNameLabel.text = leaguesPresenter?.filteredLeagues![indexPath.row].strLeague
         leagueCell.leaugueImageView.layer.cornerRadius = 12
         
+        leagueCell.leaugueImageView.sd_imageIndicator =  SDWebImageActivityIndicator.gray
         if (leaguesPresenter?.leaguesDetails.count)! > indexPath.row {
             leagueCell.leaugueImageView.sd_setImage(with: URL(string: (leaguesPresenter?.leaguesDetails[indexPath.row][0].strBadge) ?? ""), placeholderImage: UIImage(named: "no_internet"))
             

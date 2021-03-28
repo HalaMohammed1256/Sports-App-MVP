@@ -9,6 +9,8 @@ import Foundation
 
 protocol LeaguesView : class{
     func reloadTable()
+    func startAnimating()
+    func stopAnimating()
 }
 
 protocol LeaguesViewPresenter{
@@ -28,25 +30,26 @@ class LeaguesPresenter: LeaguesViewPresenter{
     var filteredLeaguesBadges = [String]()
     var filteredLeagues: [League]?{
         didSet{
-                 for i in 0..<filteredLeagues!.count{
-                     dispatchGroup.enter()
-                     ApiServices.instance.getResponses(url: ApiURLs.leaguesLookup.rawValue, id: filteredLeagues?[i].idLeague ?? "") { (detailsData: LeaguesDetails?, error) in
-                         guard let detailsData = detailsData, error == nil else{
-                             return
-                         }
-                        self.leaguesDetails.append(detailsData.leagues!)
-                     }
-                     dispatchGroup.leave()
-                 }
-                 dispatchGroup.notify(queue: .main){
-                    self.view?.reloadTable()
-                 }
-             }
+            for i in 0..<filteredLeagues!.count{
+                dispatchGroup.enter()
+                ApiServices.instance.getResponses(url: ApiURLs.leaguesLookup.rawValue, id: filteredLeagues?[i].idLeague ?? "") { (detailsData: LeaguesDetails?, error) in
+                    guard let detailsData = detailsData, error == nil else{
+                        return
+                    }
+                    self.leaguesDetails.append(detailsData.leagues!)
+                }
+            }
+            dispatchGroup.leave()
+            view?.reloadTable()
+            view?.stopAnimating()
+            
         }
+    }
     
     
     func getAllFilteredLeagues(sport : String){
         
+        view?.startAnimating()
         ApiServices.instance.getResponses(url: ApiURLs.allLeagues.rawValue) { [self] (data: Leagues?, error) in
            
             guard let data = data , error == nil else{

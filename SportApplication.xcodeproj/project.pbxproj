@@ -41,6 +41,7 @@
 		884D817C260EA4D4003C7442 /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 884D8179260EA4D4003C7442 /* Ubuntu-Bold.ttf */; };
 		884D8189260EA7F0003C7442 /* JF-Flat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 884D8188260EA7F0003C7442 /* JF-Flat-Regular.ttf */; };
 		885721F7260F4FC900578E73 /* CountryLeague.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885721F6260F4FC900578E73 /* CountryLeague.swift */; };
+		885D55372610DC2200E1651A /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885D55362610DC2200E1651A /* ActivityIndicator.swift */; };
 		BA1A55C13D1FDCCA0AA38500 /* Pods_SportApplication_SportApplicationUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED073738CD6884E8F4BBDB99 /* Pods_SportApplication_SportApplicationUITests.framework */; };
 		E7C143970F387972828C05EB /* Pods_SportApplicationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56DDBC6AB592D4CBD7489233 /* Pods_SportApplicationTests.framework */; };
 /* End PBXBuildFile section */
@@ -109,6 +110,7 @@
 		884D8179260EA4D4003C7442 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
 		884D8188260EA7F0003C7442 /* JF-Flat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JF-Flat-Regular.ttf"; sourceTree = "<group>"; };
 		885721F6260F4FC900578E73 /* CountryLeague.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryLeague.swift; sourceTree = "<group>"; };
+		885D55362610DC2200E1651A /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		ED073738CD6884E8F4BBDB99 /* Pods_SportApplication_SportApplicationUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportApplication_SportApplicationUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF0FC751B9747CF1D0338D77 /* Pods-SportApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportApplication.debug.xcconfig"; path = "Target Support Files/Pods-SportApplication/Pods-SportApplication.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -199,6 +201,7 @@
 		2B870D842606512200C47105 /* SportApplication */ = {
 			isa = PBXGroup;
 			children = (
+				885D55352610DC1500E1651A /* Utils */,
 				2B870DBE2606516F00C47105 /* Delegate */,
 				2B870DBF2606518400C47105 /* Assets */,
 				2BCC824F260918B2000EB543 /* Styles */,
@@ -367,6 +370,14 @@
 				88078072260D61AB00432655 /* LeguesPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		885D55352610DC1500E1651A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				885D55362610DC2200E1651A /* ActivityIndicator.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		FAFCB318D3355DBD88B54673 /* Frameworks */ = {
@@ -626,6 +637,7 @@
 				884D815E260E2733003C7442 /* LegueDetails.swift in Sources */,
 				2BCC825926091BEC000EB543 /* HomeViewController+SportCollectionViewDelegates.swift in Sources */,
 				2BCC82512609194B000EB543 /* MainColor.swift in Sources */,
+				885D55372610DC2200E1651A /* ActivityIndicator.swift in Sources */,
 				2BC8E354260D3B5E00719B96 /* LeaguesViewController+TableViewDelegates.swift in Sources */,
 				2B870DEC2606656D00C47105 /* LeaguesDetailsViewController.swift in Sources */,
 				8807803E260CA84200432655 /* SportsPresenter.swift in Sources */,

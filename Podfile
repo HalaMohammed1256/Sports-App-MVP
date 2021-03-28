@@ -19,5 +19,6 @@ target 'SportApplication' do
   pod 'Alamofire', '~> 4.9.1'
   pod 'SDWebImage', '~> 5.0'
   pod 'ReachabilitySwift'
+  pod 'NVActivityIndicatorView'
 
 end

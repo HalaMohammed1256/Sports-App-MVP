@@ -9,10 +9,11 @@ import UIKit
 import Reachability
 
 class HomeViewController: UIViewController, SportsView{
+   
 
     var sportsPresenter : SportsViewPresenter?
     var selectedIndex : Int?
-    
+    var indicator : ActivityIndicator?
 
     //declare this property where it won't go out of scope relative to your listener
     let reachability = try! Reachability()
@@ -20,7 +21,6 @@ class HomeViewController: UIViewController, SportsView{
     // outlets
     @IBOutlet weak var designView: UIView!
     @IBOutlet weak var sportsCollectionView: UICollectionView!{
-        
         didSet{
             // collection view delegates
             sportsCollectionView.delegate = self
@@ -32,13 +32,14 @@ class HomeViewController: UIViewController, SportsView{
         super.viewDidLoad()
 
         self.view.backgroundColor = MainColor.instance.backgroundColor
-        sportsPresenter = SportsPresenter(view: self)
         designView.backgroundColor = MainColor.instance.ViewColor
         sportsCollectionView.layer.cornerRadius = 15
         
-      //  getSports()
-   
-      sportsPresenter?.getSports()
+        sportsPresenter = SportsPresenter(view: self)
+        sportsPresenter?.getSports()
+        
+        indicator = ActivityIndicator(view: sportsCollectionView)
+        indicator?.buildIndicator()
         
         do{
             try reachability.startNotifier()
@@ -54,35 +55,26 @@ class HomeViewController: UIViewController, SportsView{
   
 
     }
+
+    func startAnimating() {
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            self.indicator?.startAnimating()
+        }
+    }
     
     func reloadCollectionView() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
             self.sportsCollectionView.reloadData()
         })
     }
+    
+    func stopAnimating() {
+        DispatchQueue.main.async {
+            self.indicator?.stopAnimating()
+        }
+    }
+    
 }
 
 
- /*   func getSports() {
 
-        ApiServices.instance.getAllSportJsonData(url: ApiURls.allSports.rawValue) { (data: SportsModel?, error) in
-
-            if error != nil || data == nil{
-
-                print(error!)
-
-            }else if let sportsData = data{
-
-                self.sportsArray = (sportsData.sports)!
-
-                DispatchQueue.main.async {
-                    self.sportsCollectionView.reloadData()
-                }
-
-            }
-
-        }
-
-    }*/
-    
-    

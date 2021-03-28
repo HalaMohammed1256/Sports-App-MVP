@@ -8,8 +8,8 @@
 import Foundation
 
 protocol SportsView : class {
-//    func startAnimating()
-//    func stopAnimating()
+    func startAnimating()
+    func stopAnimating()
     func reloadCollectionView()
 }
 
@@ -25,6 +25,7 @@ class SportsPresenter: SportsViewPresenter {
     var sports: [Sport]?{
         didSet{
             self.view?.reloadCollectionView()
+            view?.stopAnimating()
         }
     }
     
@@ -35,6 +36,9 @@ class SportsPresenter: SportsViewPresenter {
     }
     
     func getSports() {
+        
+        
+        view?.startAnimating()
         
         ApiServices.instance.getResponses(url: ApiURLs.allSports.rawValue) { (data: SportsModel?, error) in
                     
