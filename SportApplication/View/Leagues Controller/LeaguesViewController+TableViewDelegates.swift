@@ -25,6 +25,25 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
         
         if (leaguesPresenter?.leaguesDetails.count)! > indexPath.row {
             leagueCell.leaugueImageView.sd_setImage(with: URL(string: (leaguesPresenter?.leaguesDetails[indexPath.row][0].strBadge) ?? ""), placeholderImage: UIImage(named: "no_internet"))
+            
+            if leaguesPresenter?.leaguesDetails[indexPath.row][0].strYoutube != ""{
+                
+                leagueCell.youtubeChannelIcon.isHidden = false
+                
+                leagueCell.youtubeChannelAction = {
+                    
+                    if let youtubeLink = self.leaguesPresenter?.leaguesDetails[indexPath.row][0].strYoutube{
+                        self.urlLink = youtubeLink
+                    }
+                    
+                    self.performSegue(withIdentifier: "webView", sender: self)
+                    
+                }
+                
+            }else{
+                leagueCell.youtubeChannelIcon.isHidden = true
+            }
+            
         }
        
         
@@ -32,8 +51,15 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
         
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        return 1
+        guard let youtubeURL = urlLink else {
+            return
+        }
+        
+        if let destination = segue.destination as? WebViewController{
+            destination.urlLink = "https://" + youtubeURL
+        }
+        
     }
 }
