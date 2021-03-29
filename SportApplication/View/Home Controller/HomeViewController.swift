@@ -39,7 +39,7 @@ class HomeViewController: UIViewController, SportsView{
         sportsPresenter?.getSports()
         
         indicator = ActivityIndicator(view: sportsCollectionView)
-        indicator?.buildIndicator()
+
         
         do{
             try reachability.startNotifier()

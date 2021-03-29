@@ -18,7 +18,7 @@ class ActivityIndicator {
         self.view = view
         activityIndicator = NVActivityIndicatorView(frame: .zero, type: .ballClipRotatePulse, color: .green, padding: 0)
     }
-    func buildIndicator() {
+    fileprivate func buildIndicator() {
         activityIndicator?.translatesAutoresizingMaskIntoConstraints = false
         view?.addSubview(activityIndicator!)
         NSLayoutConstraint.activate([
@@ -30,6 +30,7 @@ class ActivityIndicator {
     }
     
     func startAnimating() {
+        buildIndicator()
         activityIndicator?.startAnimating()
     }
     func stopAnimating() {

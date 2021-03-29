@@ -42,6 +42,11 @@
 		884D8189260EA7F0003C7442 /* JF-Flat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 884D8188260EA7F0003C7442 /* JF-Flat-Regular.ttf */; };
 		885721F7260F4FC900578E73 /* CountryLeague.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885721F6260F4FC900578E73 /* CountryLeague.swift */; };
 		885D55372610DC2200E1651A /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885D55362610DC2200E1651A /* ActivityIndicator.swift */; };
+		88D130AC2611F1C500E650A7 /* sportsStub.json in Resources */ = {isa = PBXBuildFile; fileRef = 88D130AB2611F1C500E650A7 /* sportsStub.json */; };
+		88D130B12611F40E00E650A7 /* APIMockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D130B02611F40E00E650A7 /* APIMockService.swift */; };
+		88D130B62611F75F00E650A7 /* APIServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D130B52611F75F00E650A7 /* APIServiceTest.swift */; };
+		88D130BE2611FD6200E650A7 /* CollectionViewsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D130BD2611FD6200E650A7 /* CollectionViewsTest.swift */; };
+		88D130C62611FFAD00E650A7 /* CollectionViewExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D130C52611FFAD00E650A7 /* CollectionViewExtentions.swift */; };
 		BA1A55C13D1FDCCA0AA38500 /* Pods_SportApplication_SportApplicationUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED073738CD6884E8F4BBDB99 /* Pods_SportApplication_SportApplicationUITests.framework */; };
 		E7C143970F387972828C05EB /* Pods_SportApplicationTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56DDBC6AB592D4CBD7489233 /* Pods_SportApplicationTests.framework */; };
 /* End PBXBuildFile section */
@@ -111,6 +116,11 @@
 		884D8188260EA7F0003C7442 /* JF-Flat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JF-Flat-Regular.ttf"; sourceTree = "<group>"; };
 		885721F6260F4FC900578E73 /* CountryLeague.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryLeague.swift; sourceTree = "<group>"; };
 		885D55362610DC2200E1651A /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		88D130AB2611F1C500E650A7 /* sportsStub.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sportsStub.json; sourceTree = "<group>"; };
+		88D130B02611F40E00E650A7 /* APIMockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMockService.swift; sourceTree = "<group>"; };
+		88D130B52611F75F00E650A7 /* APIServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceTest.swift; sourceTree = "<group>"; };
+		88D130BD2611FD6200E650A7 /* CollectionViewsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewsTest.swift; sourceTree = "<group>"; };
+		88D130C52611FFAD00E650A7 /* CollectionViewExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewExtentions.swift; sourceTree = "<group>"; };
 		ED073738CD6884E8F4BBDB99 /* Pods_SportApplication_SportApplicationUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportApplication_SportApplicationUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF0FC751B9747CF1D0338D77 /* Pods-SportApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportApplication.debug.xcconfig"; path = "Target Support Files/Pods-SportApplication/Pods-SportApplication.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,6 +182,8 @@
 			children = (
 				2B2FFDAD260AC22C00B98699 /* ApiServices.swift */,
 				2B2FFDBE260AC4ED00B98699 /* ApiURLs.swift */,
+				88D130AB2611F1C500E650A7 /* sportsStub.json */,
+				88D130B02611F40E00E650A7 /* APIMockService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -220,6 +232,8 @@
 			children = (
 				2B870D9F2606512300C47105 /* SportApplicationTests.swift */,
 				2B870DA12606512300C47105 /* Info.plist */,
+				88D130B52611F75F00E650A7 /* APIServiceTest.swift */,
+				88D130BD2611FD6200E650A7 /* CollectionViewsTest.swift */,
 			);
 			path = SportApplicationTests;
 			sourceTree = "<group>";
@@ -376,6 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				885D55362610DC2200E1651A /* ActivityIndicator.swift */,
+				88D130C52611FFAD00E650A7 /* CollectionViewExtentions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -500,6 +515,7 @@
 			files = (
 				2B2FFDCD260ADAA900B98699 /* Merriweather-Black.ttf in Resources */,
 				884D817A260EA4D4003C7442 /* Ubuntu-Medium.ttf in Resources */,
+				88D130AC2611F1C500E650A7 /* sportsStub.json in Resources */,
 				884D8189260EA7F0003C7442 /* JF-Flat-Regular.ttf in Resources */,
 				2B870D952606512200C47105 /* LaunchScreen.storyboard in Resources */,
 				2B870D922606512200C47105 /* Assets.xcassets in Resources */,
@@ -643,6 +659,7 @@
 				8807803E260CA84200432655 /* SportsPresenter.swift in Sources */,
 				2BC8E34F260D3A8800719B96 /* LeagueViewTableViewCell.swift in Sources */,
 				2BCC825F26091C7F000EB543 /* SportCollectionViewCell.swift in Sources */,
+				88D130B12611F40E00E650A7 /* APIMockService.swift in Sources */,
 				88078073260D61AB00432655 /* LeguesPresenter.swift in Sources */,
 				2B2FFDBA260AC3BE00B98699 /* SportModel.swift in Sources */,
 				2B870DD826065DC400C47105 /* HomeViewController.swift in Sources */,
@@ -651,6 +668,7 @@
 				2BA253802610D1D100908E8D /* WebViewController.swift in Sources */,
 				2B870D862606512200C47105 /* AppDelegate.swift in Sources */,
 				2B870D882606512200C47105 /* SceneDelegate.swift in Sources */,
+				88D130C62611FFAD00E650A7 /* CollectionViewExtentions.swift in Sources */,
 				2B870DDE26065E0500C47105 /* ChatViewController.swift in Sources */,
 				2B870DE72606650B00C47105 /* TeamDetailsViewController.swift in Sources */,
 				2B870DD026065D8A00C47105 /* FavoriteViewController.swift in Sources */,
@@ -664,7 +682,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88D130B62611F75F00E650A7 /* APIServiceTest.swift in Sources */,
 				2B870DA02606512300C47105 /* SportApplicationTests.swift in Sources */,
+				88D130BE2611FD6200E650A7 /* CollectionViewsTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

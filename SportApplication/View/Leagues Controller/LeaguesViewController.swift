@@ -31,8 +31,6 @@ class LeaguesViewController: UIViewController {
         leaguesPresenter?.getAllFilteredLeagues(sport: sport ?? "")
         
         indicator = ActivityIndicator(view: LeagueViewTableView)
-        indicator?.buildIndicator()
-        
     }
 
 }

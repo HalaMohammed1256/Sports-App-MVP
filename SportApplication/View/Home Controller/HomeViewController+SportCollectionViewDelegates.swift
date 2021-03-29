@@ -21,11 +21,10 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             numberOfItems = 1
             
         }else{
-
+            
             numberOfItems = sportsPresenter?.sports?.count ?? 0
-
+            print("Items in section: \(sportsPresenter?.sports?.count ?? 0)")
         }
-        
         return numberOfItems
     }
     
@@ -91,5 +90,9 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             
             destination.sport =  self.sportsPresenter?.sports?[selectedIndex!].strSport
         }
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
 }
