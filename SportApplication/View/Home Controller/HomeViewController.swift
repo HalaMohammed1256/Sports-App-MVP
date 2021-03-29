@@ -71,6 +71,7 @@ class HomeViewController: UIViewController, SportsView{
     func stopAnimating() {
         DispatchQueue.main.async {
             self.indicator?.stopAnimating()
+            
         }
     }
     

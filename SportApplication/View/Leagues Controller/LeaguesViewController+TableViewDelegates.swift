@@ -20,11 +20,17 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
         guard let leagueCell = tableView.dequeueReusableCell(withIdentifier: "LeagueViewTableViewCell") as? LeagueViewTableViewCell else {
             return UITableViewCell()
         }
-        leagueCell.LeagueNameLabel.text = leaguesPresenter?.filteredLeagues![indexPath.row].strLeague
-        leagueCell.leaugueImageView.layer.cornerRadius = 12
+//        leagueCell.LeagueNameLabel.text = leaguesPresenter?.filteredLeagues![indexPath.row].strLeague
+        
+//        leagueCell.LeagueNameLabel.text = leaguesPresenter?.leaguesDetails[indexPath.row][0].strLeague
+//        leagueCell.leaugueImageView.layer.cornerRadius = 12
         
         leagueCell.leaugueImageView.sd_imageIndicator =  SDWebImageActivityIndicator.gray
         if (leaguesPresenter?.leaguesDetails.count)! > indexPath.row {
+            
+            leagueCell.LeagueNameLabel.text = leaguesPresenter?.leaguesDetails[indexPath.row][0].strLeague
+            leagueCell.leaugueImageView.layer.cornerRadius = 12
+            
             leagueCell.leaugueImageView.sd_setImage(with: URL(string: (leaguesPresenter?.leaguesDetails[indexPath.row][0].strBadge) ?? ""), placeholderImage: UIImage(named: "no_internet"))
             
             if leaguesPresenter?.leaguesDetails[indexPath.row][0].strYoutube != ""{
@@ -63,4 +69,14 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
         }
         
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let details = self.storyboard?.instantiateViewController(withIdentifier: "LeaguesDetailsViewController") as! LeaguesDetailsViewController
+        
+        self.present(details, animated: true, completion: nil)
+        
+    }
+    
 }

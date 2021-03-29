@@ -90,6 +90,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
         if let destination = segue.destination as? LeaguesViewController{
             
             destination.sport =  self.sportsPresenter?.sports?[selectedIndex!].strSport
+            destination.hidesBottomBarWhenPushed = true
         }
     }
 }
