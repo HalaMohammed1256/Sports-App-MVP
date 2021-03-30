@@ -93,8 +93,8 @@
                     <navigationItem key="navigationItem" id="qc3-zO-K22"/>
                     <connections>
                         <outlet property="LeagueViewTableView" destination="vP4-TU-lwR" id="Ggk-te-9Me"/>
-                        <segue destination="IX7-QG-yH2" kind="show" identifier="webView" id="ufn-uc-90T"/>
-                        <segue destination="NCz-wa-g6E" kind="show" identifier="leagueDetails" id="DgK-Bk-gnr"/>
+                        <segue destination="NCz-wa-g6E" kind="show" identifier="leagueDetails" id="jsM-Yy-2Q7"/>
+                        <segue destination="IX7-QG-yH2" kind="show" identifier="webView" id="fUZ-iz-p3q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="69Z-RV-fpa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

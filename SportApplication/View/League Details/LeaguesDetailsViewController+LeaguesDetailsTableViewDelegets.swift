@@ -74,6 +74,9 @@ extension LeaguesDetailsViewController : UITableViewDelegate, UITableViewDataSou
             }
 
             cell.leagueEventsDetails = leaguesDetailsPresenter?.leagueEventsDetails
+            cell.homeTeamDetails = leaguesDetailsPresenter?.teamDetails
+            
+            //cell.awayTeamDetails = leaguesDetailsPresenter?.teamDetails
             
             return cell
             
@@ -85,6 +88,7 @@ extension LeaguesDetailsViewController : UITableViewDelegate, UITableViewDataSou
             }
             
             cell.leagueEventsDetails = leaguesDetailsPresenter?.leagueEventsDetails
+            
             
             return cell
             

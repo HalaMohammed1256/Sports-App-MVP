@@ -75,7 +75,7 @@ struct Team : Codable {
 }
 
 
-struct TeamsModel : Codable {
+struct Teams : Codable {
     let teams : [Team]?
 
 }

@@ -7,12 +7,23 @@
 
 import UIKit
 
-class UpcomingEventTableViewCell: UITableViewCell, LeagueDetailsView{
+class UpcomingEventTableViewCell: UITableViewCell{
 
 
     let mainColor = MainColor()
     var presenter : LeagueDetailsPresenter?
     
+    var homeTeamDetails : [Team]?{
+        didSet{
+            self.collectionView.reloadData()
+        }
+    }
+    
+    var awayTeamDetails : [Team]?{
+        didSet{
+            self.collectionView.reloadData()
+        }
+    }
     
     var leagueEventsDetails : [Event]?{
         
@@ -37,10 +48,6 @@ class UpcomingEventTableViewCell: UITableViewCell, LeagueDetailsView{
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        presenter = LeagueDetailsPresenter(view: self)
-
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -48,25 +55,7 @@ class UpcomingEventTableViewCell: UITableViewCell, LeagueDetailsView{
 
         // Configure the view for the selected state
     }
-    
-    
-    
-    func reloadTable() {
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
-    }
-    
-    func startAnimating() {
-        
-    }
-    
-    func stopAnimating() {
-        
-    }
-
 }
-
 
 extension UpcomingEventTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
@@ -90,17 +79,19 @@ extension UpcomingEventTableViewCell: UICollectionViewDelegate, UICollectionView
         cell.layer.cornerRadius = 10
         
         
-        presenter?.getTeamDetails(apiURL: ApiURLs.teamDetails.rawValue, id: "133636")
-        //(leagueEventsDetails?[indexPath.row].idHomeTeam)!
-                                        
-//        cell.firstImageView.sd_setImage(with: URL(string: (presenter?.teamsImage!)!), placeholderImage: UIImage(named: ""))
-                                        
-        cell.secondImageView.sd_setImage(with: URL(string:  (leagueEventsDetails?[indexPath.row].strThumb!)!), placeholderImage: UIImage(named: ""))
         
         cell.firstNameLabel.text = leagueEventsDetails?[indexPath.row].strHomeTeam!
         cell.secondNameLabel.text = leagueEventsDetails?[indexPath.row].strAwayTeam!
         
         cell.dateLabel.text = "\((leagueEventsDetails?[indexPath.row].strTime)!)\n\((leagueEventsDetails?[indexPath.row].dateEvent)!)"
+        
+        
+        if (homeTeamDetails?.count)! > indexPath.row{
+       cell.firstImageView.sd_setImage(with: URL(string: homeTeamDetails![0].strTeamBadge!), placeholderImage: UIImage(named: ""))
+        }
+//        
+//        cell.secondImageView.sd_setImage(with: URL(string:  awayTeamDetails![0].strTeamBadge!), placeholderImage: UIImage(named: ""))
+//        
         
         return cell
         

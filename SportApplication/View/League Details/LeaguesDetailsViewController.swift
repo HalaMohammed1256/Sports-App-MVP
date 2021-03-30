@@ -14,25 +14,28 @@ class LeaguesDetailsViewController: UIViewController, LeagueDetailsView{
     var leaguesDetailsPresenter : LeagueDetailsPresenter?
     var leagueID : String?
     var indicator : ActivityIndicator?
-    
-    
     @IBOutlet weak var leagueDetailsTableView: UITableView!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         leaguesDetailsPresenter = LeagueDetailsPresenter(view: self)
         
-        leaguesDetailsPresenter?.getEventsData(apiURL: ApiURLs.leagueEvents.rawValue, id: "4328")
-        leaguesDetailsPresenter?.getTeamsData(apiURL: ApiURLs.leagueTeams.rawValue, id: "4328")
+        leaguesDetailsPresenter?.getEventsData(apiURL: ApiURLs.leagueEvents.rawValue, id: leagueID ?? "")
         
-        //leaguesDetailsPresenter?.getTeamDetails(apiURL: ApiURLs.teamDetails.rawValue, id: leaguesDetailsPresenter?.leagueEventsDetails[0])//"133636"
+        leaguesDetailsPresenter?.getTeamsData(apiURL: ApiURLs.leagueTeams.rawValue, id: leagueID ?? "")
         
         
-        indicator = ActivityIndicator(view: leagueDetailsTableView)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
+            self?.leaguesDetailsPresenter?.getTeamDetails(apiURL: ApiURLs.teamDetails.rawValue, id: (self?.leaguesDetailsPresenter?.leagueEventsDetails![0].idHomeTeam!)!)
+        }
         
 
+  
+      
+    
+        indicator = ActivityIndicator(view: leagueDetailsTableView)
     }
     
     
@@ -40,6 +43,8 @@ class LeaguesDetailsViewController: UIViewController, LeagueDetailsView{
         DispatchQueue.main.async {
             self.leagueDetailsTableView.reloadData()
         }
+        
+       // leaguesDetailsPresenter?.getTeamDetails(apiURL: ApiURLs.teamDetails.rawValue, id: (leaguesDetailsPresenter?.leagueEventsDetails![0].idAwayTeam)!)
     }
     
     func startAnimating() {
@@ -53,6 +58,6 @@ class LeaguesDetailsViewController: UIViewController, LeagueDetailsView{
             self.indicator?.stopAnimating()
         }
     }
-    
+
 
 }

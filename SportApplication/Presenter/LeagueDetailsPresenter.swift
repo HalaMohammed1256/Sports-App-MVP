@@ -21,7 +21,8 @@ protocol LeagueDetailsViewPresenter {
     
     var leagueEventsDetails : [Event]?{get set}
     var leagueTeamsDetails : [Team]?{get set}
-    var teamsImage : String?{get set}
+    var teamDetails : [Team]?{get set}
+
     
     func getEventsData(apiURL: String, id: String)
     func getTeamsData(apiURL: String, id: String)
@@ -29,14 +30,12 @@ protocol LeagueDetailsViewPresenter {
 
 
 class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
-    
-    
-    var teamsImage: String?{
+    var teamDetails: [Team]?{
         didSet{
-            self.view?.reloadTable()
+            view?.reloadTable()
+            view?.stopAnimating()
         }
     }
-    
     
     var leagueEventsDetails: [Event]?{
         didSet{
@@ -84,7 +83,7 @@ class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
         
         view?.startAnimating()
         
-        ApiServices.instance.getResponses(url: apiURL, id: id) { (data: TeamsModel?, error) in
+        ApiServices.instance.getResponses(url: apiURL, id: id) { (data: Teams?, error) in
             
             guard let teamData = data, error == nil else{
                 return
@@ -99,19 +98,16 @@ class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
     
     func getTeamDetails(apiURL: String, id: String) {
         
-        
-        ApiServices.instance.getResponses(url: apiURL, id: id) { (data: TeamDataModel?, error) in
+        ApiServices.instance.getResponses(url: apiURL, id: id) { [weak self] (data: Teams?, error) in
             
             guard let teamData = data, error == nil else{
                 return
             }
             
-            self.teamsImage = teamData.strTeamBadge
+            self?.teamDetails = teamData.teams!
         }
         
     }
- 
-    
 }
 
 
