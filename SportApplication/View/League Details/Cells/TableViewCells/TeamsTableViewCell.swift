@@ -9,8 +9,9 @@ import UIKit
 
 class TeamsTableViewCell: UITableViewCell{
     
+    var didSelectItemAtIndexPath : ((IndexPath) -> Void)?
+    
     var leagueTeamsDetails : [Team]?{
-        
         didSet{
             DispatchQueue.main.async {
                 self.teamCollectionView.reloadData()
@@ -73,9 +74,11 @@ extension TeamsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
 
             return CGSize(width: (collectionView.frame.width/2.2), height: collectionView.frame.width/1.85)
     }
-    
-    
-    
-    
+ 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        didSelectItemAtIndexPath?(indexPath)
+            
+    }
 }
+
 

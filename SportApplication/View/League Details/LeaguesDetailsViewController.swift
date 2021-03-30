@@ -10,11 +10,13 @@ import UIKit
 class LeaguesDetailsViewController: UIViewController, LeagueDetailsView{
     
     
-    
+    var indexPath : Int?
     var leaguesDetailsPresenter : LeagueDetailsPresenter?
     var leagueID : String?
     var indicator : ActivityIndicator?
     @IBOutlet weak var leagueDetailsTableView: UITableView!
+    
+   
     
 
     override func viewDidLoad() {

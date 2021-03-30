@@ -58,9 +58,9 @@ extension LastEventTableViewCell : UITableViewDataSource, UITableViewDelegate{
         }
         
         cell.layer.cornerRadius = 20
-        
-        cell.firstImageView.sd_setImage(with: URL(string:  (leagueEventsDetails?[indexPath.row].strThumb!)!), placeholderImage: UIImage(named: ""))
-        cell.secondImageView.sd_setImage(with: URL(string:  (leagueEventsDetails?[indexPath.row].strThumb!)!), placeholderImage: UIImage(named: ""))
+//        
+//        cell.firstImageView.sd_setImage(with: URL(string:  (leagueEventsDetails?[indexPath.row].strThumb!)!), placeholderImage: UIImage(named: ""))
+//        cell.secondImageView.sd_setImage(with: URL(string:  (leagueEventsDetails?[indexPath.row].strThumb!)!), placeholderImage: UIImage(named: ""))
         
         cell.firstNameLabel.text = leagueEventsDetails?[indexPath.row].strHomeTeam!
         cell.secondNameLabel.text = leagueEventsDetails?[indexPath.row].strAwayTeam!

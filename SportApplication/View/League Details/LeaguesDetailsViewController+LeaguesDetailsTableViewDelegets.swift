@@ -88,12 +88,8 @@ extension LeaguesDetailsViewController : UITableViewDelegate, UITableViewDataSou
             }
             
             cell.leagueEventsDetails = leaguesDetailsPresenter?.leagueEventsDetails
-            
-            
             return cell
-            
-            
-            
+      
         case 2:
             
             guard let cell = leagueDetailsTableView.dequeueReusableCell(withIdentifier: String(describing: TeamsTableViewCell.self), for: indexPath)  as? TeamsTableViewCell else {
@@ -102,17 +98,26 @@ extension LeaguesDetailsViewController : UITableViewDelegate, UITableViewDataSou
             
             cell.leagueTeamsDetails = leaguesDetailsPresenter?.leagueTeamsDetails
             
-            return cell
+            cell.didSelectItemAtIndexPath = { [weak self] indexPath in
+                self?.indexPath = indexPath.row
+                self?.performSegue(withIdentifier: "teamDetails", sender: self)
+            }
             
+            
+            return cell
             
         default:
             return UITableViewCell()
         }
-        
-        
     }
-        
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as? TeamDetailsViewController
+
+        if segue.identifier == "teamDetails"{
+            destination!.team = leaguesDetailsPresenter?.leagueTeamsDetails![self.indexPath!]
+        }
+    }
+    
 }
-    
-    
-    

@@ -86,9 +86,9 @@ extension UpcomingEventTableViewCell: UICollectionViewDelegate, UICollectionView
         cell.dateLabel.text = "\((leagueEventsDetails?[indexPath.row].strTime)!)\n\((leagueEventsDetails?[indexPath.row].dateEvent)!)"
         
         
-        if (homeTeamDetails?.count)! > indexPath.row{
-       cell.firstImageView.sd_setImage(with: URL(string: homeTeamDetails![0].strTeamBadge!), placeholderImage: UIImage(named: ""))
-        }
+//        if (homeTeamDetails?.count)! > indexPath.row{
+//       cell.firstImageView.sd_setImage(with: URL(string: homeTeamDetails![0].strTeamBadge!), placeholderImage: UIImage(named: ""))
+//        }
 //        
 //        cell.secondImageView.sd_setImage(with: URL(string:  awayTeamDetails![0].strTeamBadge!), placeholderImage: UIImage(named: ""))
 //        

@@ -433,6 +433,7 @@
                     <navigationItem key="navigationItem" id="U6O-uT-GSv"/>
                     <connections>
                         <outlet property="leagueDetailsTableView" destination="iLk-0z-R8s" id="fUg-W1-6vc"/>
+                        <segue destination="Po3-h4-HIj" kind="show" identifier="teamDetails" id="56g-Bu-XT9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lB1-H7-FTG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -449,6 +450,7 @@
                         <viewLayoutGuide key="safeArea" id="f0h-Sm-3Xa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Iuq-GT-Qqz"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OT0-bp-4db" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
