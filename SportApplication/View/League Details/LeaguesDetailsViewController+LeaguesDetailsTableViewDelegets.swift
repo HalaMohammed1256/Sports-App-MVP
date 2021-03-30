@@ -72,6 +72,8 @@ extension LeaguesDetailsViewController : UITableViewDelegate, UITableViewDataSou
             guard let cell = leagueDetailsTableView.dequeueReusableCell(withIdentifier: String(describing: UpcomingEventTableViewCell.self), for: indexPath)  as? UpcomingEventTableViewCell else {
                 return UITableViewCell()
             }
+
+            cell.leagueEventsDetails = leaguesDetailsPresenter?.leagueEventsDetails
             
             return cell
             
@@ -81,6 +83,8 @@ extension LeaguesDetailsViewController : UITableViewDelegate, UITableViewDataSou
             guard let cell = leagueDetailsTableView.dequeueReusableCell(withIdentifier: String(describing: LastEventTableViewCell.self), for: indexPath)  as? LastEventTableViewCell else {
                 return UITableViewCell()
             }
+            
+            cell.leagueEventsDetails = leaguesDetailsPresenter?.leagueEventsDetails
             
             return cell
             
@@ -92,8 +96,9 @@ extension LeaguesDetailsViewController : UITableViewDelegate, UITableViewDataSou
                 return UITableViewCell()
             }
             
-            return cell
+            cell.leagueTeamsDetails = leaguesDetailsPresenter?.leagueTeamsDetails
             
+            return cell
             
             
         default:

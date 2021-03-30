@@ -12,6 +12,7 @@ class LeaguesViewController: UIViewController {
     var leaguesPresenter : LeaguesPresenter?
     var sport : String?
     var urlLink : String?
+    var idLeague : String?
     var indicator : ActivityIndicator?
     
     
@@ -21,7 +22,7 @@ class LeaguesViewController: UIViewController {
             LeagueViewTableView.dataSource = self
         }
     }
-    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()

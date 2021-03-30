@@ -7,17 +7,33 @@
 
 import UIKit
 
+
 class LastEventTableViewCell: UITableViewCell {
+    
+    var leagueEventsDetails : [Event]?{
+        
+        didSet{
+            DispatchQueue.main.async {
+                self.lastTableView.reloadData()
+            }
+        }
+        
+    }
+
 
     
-    @IBOutlet weak var lastTableView: UITableView!
+    @IBOutlet weak var lastTableView: UITableView!{
+        
+        didSet{
+            lastTableView.dataSource = self
+            lastTableView.delegate = self
+        }
+        
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
-        lastTableView.dataSource = self
-        lastTableView.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -32,7 +48,7 @@ class LastEventTableViewCell: UITableViewCell {
 extension LastEventTableViewCell : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return leagueEventsDetails?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,13 +59,13 @@ extension LastEventTableViewCell : UITableViewDataSource, UITableViewDelegate{
         
         cell.layer.cornerRadius = 20
         
-        cell.firstImageView.image = UIImage(named: "instagram")
-        cell.secondImageView.image = UIImage(named: "instagram")
+        cell.firstImageView.sd_setImage(with: URL(string:  (leagueEventsDetails?[indexPath.row].strThumb!)!), placeholderImage: UIImage(named: ""))
+        cell.secondImageView.sd_setImage(with: URL(string:  (leagueEventsDetails?[indexPath.row].strThumb!)!), placeholderImage: UIImage(named: ""))
         
-        cell.firstNameLabel.text = "hhhhhhh"
-        cell.secondNameLabel.text = "sdfghjkl"
+        cell.firstNameLabel.text = leagueEventsDetails?[indexPath.row].strHomeTeam!
+        cell.secondNameLabel.text = leagueEventsDetails?[indexPath.row].strAwayTeam!
         
-        cell.dateLabel.text = "date"
+        cell.dateLabel.text = "\((leagueEventsDetails?[indexPath.row].strTime)!)\n\((leagueEventsDetails?[indexPath.row].dateEvent)!)"
         
         
         return cell

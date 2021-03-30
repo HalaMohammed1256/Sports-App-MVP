@@ -46,6 +46,6 @@ class SportsPresenter: SportsViewPresenter {
                 return
             }
             self.sports = (data.sports)!
-}
-}
+        }
+    }
 }

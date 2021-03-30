@@ -13,6 +13,7 @@ protocol LeaguesView : class{
     func stopAnimating()
 }
 
+
 protocol LeaguesViewPresenter{
     init(view:LeaguesView)
     var filteredLeagues : [League]?{get set}
