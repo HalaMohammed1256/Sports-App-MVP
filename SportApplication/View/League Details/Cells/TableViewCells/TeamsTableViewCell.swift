@@ -7,18 +7,32 @@
 
 import UIKit
 
-class TeamsTableViewCell: UITableViewCell {
+class TeamsTableViewCell: UITableViewCell{
+    
+    var leagueTeamsDetails : [Team]?{
+        
+        didSet{
+            DispatchQueue.main.async {
+                self.teamCollectionView.reloadData()
+            }
+        }
+        
+    }
 
     
-    @IBOutlet weak var teamCollectionView: UICollectionView!
+    @IBOutlet weak var teamCollectionView: UICollectionView!{
+        
+        didSet{
+            teamCollectionView.delegate = self
+            teamCollectionView.dataSource = self
+        }
+        
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        
-        teamCollectionView.delegate = self
-        teamCollectionView.dataSource = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,12 +44,12 @@ class TeamsTableViewCell: UITableViewCell {
 }
 
 
-extension TeamsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
+extension TeamsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 5
+        return leagueTeamsDetails?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -47,12 +61,20 @@ extension TeamsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
             return UICollectionViewCell()
         }
         
-        cell.teamImageView.image = UIImage(named: "instagram")
+        cell.teamImageView.sd_setImage(with: URL(string:  (leagueTeamsDetails?[indexPath.row].strTeamBadge!)!), placeholderImage: UIImage(named: ""))
         
         
         return cell
         
     }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+            return CGSize(width: (collectionView.frame.width/2.2), height: collectionView.frame.width/1.85)
+    }
+    
+    
     
     
 }

@@ -58,25 +58,45 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
         
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.idLeague = leaguesPresenter?.leaguesDetails[indexPath.row][0].idLeague
+        
+        self.performSegue(withIdentifier: "leagueDetails", sender: self)
+        
+        
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         
         guard let youtubeURL = urlLink else {
             return
         }
         
-        if let destination = segue.destination as? WebViewController{
-            destination.urlLink = "https://" + youtubeURL
+        guard let leagueID = idLeague else {
+            return
         }
         
-    }
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let details = self.storyboard?.instantiateViewController(withIdentifier: "LeaguesDetailsViewController") as! LeaguesDetailsViewController
-        
-        self.present(details, animated: true, completion: nil)
-        
+                
+        if let identifier = segue.identifier{
+            switch identifier {
+                case "webView":
+                    if let webViewDestination = segue.destination as? WebViewController{
+                        webViewDestination.urlLink = "https://" + youtubeURL
+                    }
+                case "leagueDetails":
+                    if let leagueDetailsDestination = segue.destination as? LeaguesDetailsViewController{
+                        leagueDetailsDestination.leagueID = leagueID
+                    }
+
+                default:
+                    print("Identifier Not Found!")
+                }
+        }
+              
     }
     
 }
