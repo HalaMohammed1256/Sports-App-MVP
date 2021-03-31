@@ -7,17 +7,28 @@
 
 import Foundation
 import UIKit
-import SDWebImage
+import SkeletonView
 
-extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
+extension LeaguesViewController : UITableViewDelegate, SkeletonTableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return leaguesPresenter?.filteredLeagues?.count ?? 0
     }
     
+   func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+       return leaguesPresenter?.filteredLeagues?.count ?? 0
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        
+        return LeagueViewTableViewCell.identifier
+    }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let leagueCell = tableView.dequeueReusableCell(withIdentifier: "LeagueViewTableViewCell") as? LeagueViewTableViewCell else {
+        guard let leagueCell = tableView.dequeueReusableCell(withIdentifier: LeagueViewTableViewCell.identifier) as? LeagueViewTableViewCell else {
             return UITableViewCell()
         }
         
@@ -61,8 +72,7 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
         self.leagueName = leaguesPresenter?.leaguesDetails[indexPath.row][0].strLeague
         
         performSegue(withIdentifier: "leagueDetails", sender: self)
-        
-        
+ 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -82,5 +92,4 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
         }
               
     }
-    
 }

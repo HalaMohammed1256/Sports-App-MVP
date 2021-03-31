@@ -11,15 +11,9 @@ import UIKit
 class LastEventTableViewCell: UITableViewCell {
     
     
-    var homeTeamDetails : [[Team]]?{
-        didSet{
-            DispatchQueue.main.async {
-                self.lastTableView.reloadData()
-            }
-        }
-    }
+    var homeTeamDetails = [[Team]]()
     
-    var awayTeamDetails : [[Team]]?{
+    var awayTeamDetails = [[Team]](){
         didSet{
             DispatchQueue.main.async {
                 self.lastTableView.reloadData()
@@ -78,12 +72,13 @@ extension LastEventTableViewCell : UITableViewDataSource, UITableViewDelegate{
         cell.layer.cornerRadius = 20
 
         
-        if (homeTeamDetails?.count)! > indexPath.row || (awayTeamDetails?.count)! > indexPath.row {
+        if (homeTeamDetails.count) > indexPath.row {
             
-            cell.firstImageView.setImage(url: homeTeamDetails![indexPath.row][0].strTeamBadge!)
-            
-            cell.secondImageView.setImage(url: awayTeamDetails![indexPath.row][0].strTeamBadge!)
-            
+            cell.firstImageView.setImage(url: homeTeamDetails[indexPath.row][0].strTeamBadge ?? "")
+        }
+        
+        if (awayTeamDetails.count) > indexPath.row{
+            cell.secondImageView.setImage(url: awayTeamDetails[indexPath.row][0].strTeamBadge ?? "")
         }
         
         

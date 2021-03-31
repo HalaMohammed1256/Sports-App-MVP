@@ -8,46 +8,30 @@
 import UIKit
 
 class UpcomingEventTableViewCell: UITableViewCell{
-
-
     let mainColor = MainColor()
-    
-    var homeTeamDetails : [[Team]]?{
-        didSet{
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-    }
-    
-    var awayTeamDetails : [[Team]]?{
-        didSet{
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-    }
-    
-    var leagueEventsDetails : [Event]?{
-        
-        didSet{
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-        
-    }
+    var homeTeamDetails = [[Team]]()
+    var awayTeamDetails = [[Team]]()
     
     @IBOutlet weak var collectionView: UICollectionView!{
-        
         didSet{
             collectionView.dataSource = self
             collectionView.delegate = self
-
         }
-        
     }
     
+//        didSet{
+//            DispatchQueue.main.async {
+//                self.collectionView.reloadData()
+//            }
+//        }
+//    }
+    var leagueEventsDetails = [Event](){
+       didSet{
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+        }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -65,7 +49,7 @@ extension UpcomingEventTableViewCell: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return leagueEventsDetails?.count ?? 0
+        return leagueEventsDetails.count 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -83,18 +67,19 @@ extension UpcomingEventTableViewCell: UICollectionViewDelegate, UICollectionView
         
         
         
-        cell.firstNameLabel.text = leagueEventsDetails?[indexPath.row].strHomeTeam!
-        cell.secondNameLabel.text = leagueEventsDetails?[indexPath.row].strAwayTeam!
+        cell.firstNameLabel.text = leagueEventsDetails[indexPath.row].strHomeTeam!
+        cell.secondNameLabel.text = leagueEventsDetails[indexPath.row].strAwayTeam!
         
-        cell.dateLabel.text = "\((leagueEventsDetails?[indexPath.row].strTime)!)\n\((leagueEventsDetails?[indexPath.row].dateEvent)!)"
+        cell.dateLabel.text = "\((leagueEventsDetails[indexPath.row].strTime)!)\n\((leagueEventsDetails[indexPath.row].dateEvent)!)"
 
         
-        if (homeTeamDetails?.count)! > indexPath.row {
+        if (homeTeamDetails.count) > indexPath.row {
             
-            cell.firstImageView.sd_setImage(with: URL(string: homeTeamDetails![indexPath.row][0].strTeamBadge!), placeholderImage: UIImage(named: ""))
+            cell.firstImageView.setImage(url: homeTeamDetails[indexPath.row][0].strTeamBadge ?? "")
+        }
+        if (awayTeamDetails.count) > indexPath.row{
             
-            cell.secondImageView.sd_setImage(with: URL(string: awayTeamDetails![indexPath.row][0].strTeamBadge!), placeholderImage: UIImage(named: ""))
-            
+            cell.secondImageView.setImage(url: awayTeamDetails[indexPath.row][0].strTeamBadge ?? "")
         }
         
         return cell

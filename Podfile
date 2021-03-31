@@ -20,5 +20,6 @@ target 'SportApplication' do
   pod 'SDWebImage', '~> 5.0'
   pod 'ReachabilitySwift'
   pod 'NVActivityIndicatorView'
+pod 'SkeletonView'
 
 end

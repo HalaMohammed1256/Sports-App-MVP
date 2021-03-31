@@ -74,9 +74,9 @@ extension LeaguesDetailsViewController : UITableViewDelegate, UITableViewDataSou
                 return UITableViewCell()
             }
 
-            cell.leagueEventsDetails = leaguesDetailsPresenter?.leagueEventsDetails
-            cell.homeTeamDetails = leaguesDetailsPresenter?.homeTeamDetails
-            cell.awayTeamDetails = leaguesDetailsPresenter?.awayTeamDetails
+            cell.leagueEventsDetails = leaguesDetailsPresenter!.leagueEventsDetails
+            cell.homeTeamDetails = leaguesDetailsPresenter!.homeTeamDetails
+            cell.awayTeamDetails = leaguesDetailsPresenter!.awayTeamDetails
             
             //cell.awayTeamDetails = leaguesDetailsPresenter?.teamDetails
             
@@ -90,8 +90,8 @@ extension LeaguesDetailsViewController : UITableViewDelegate, UITableViewDataSou
             }
             
             cell.leagueEventsDetails = leaguesDetailsPresenter?.leagueEventsDetails
-            cell.homeTeamDetails = leaguesDetailsPresenter?.homeTeamDetails
-            cell.awayTeamDetails = leaguesDetailsPresenter?.awayTeamDetails
+            cell.homeTeamDetails = leaguesDetailsPresenter!.homeTeamDetails
+            cell.awayTeamDetails = leaguesDetailsPresenter!.awayTeamDetails
             
             
             return cell
@@ -122,7 +122,7 @@ extension LeaguesDetailsViewController : UITableViewDelegate, UITableViewDataSou
         let destination = segue.destination as? TeamDetailsViewController
 
         if segue.identifier == "teamDetails"{
-            destination!.team = leaguesDetailsPresenter?.leagueTeamsDetails![self.indexPath!]
+            destination!.team = leaguesDetailsPresenter?.leagueTeamsDetails[self.indexPath!]
         }
     }
     

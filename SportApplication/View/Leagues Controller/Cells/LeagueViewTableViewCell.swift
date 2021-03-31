@@ -13,6 +13,7 @@ class LeagueViewTableViewCell: UITableViewCell {
     @IBOutlet weak var leaugueImageView: UIImageView!
     @IBOutlet weak var LeagueNameLabel: UILabel!
     @IBOutlet weak var youtubeChannelIcon: UIButton!
+    static let identifier = "FilteredLeagueViewTableViewCell"
     
     
     var youtubeChannelAction: (() -> Void)?

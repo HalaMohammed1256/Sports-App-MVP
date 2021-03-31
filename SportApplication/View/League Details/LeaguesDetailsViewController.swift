@@ -18,17 +18,13 @@ class LeaguesDetailsViewController: UIViewController, LeagueDetailsView{
     var indicator : ActivityIndicator?
     @IBOutlet weak var leagueDetailsTableView: UITableView!
     
-   
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         leaguesDetailsPresenter = LeagueDetailsPresenter(view: self)
         
-        leaguesDetailsPresenter?.getEventsData(apiURL: ApiURLs.leagueEvents.rawValue, id: leagueID ?? "")
         leaguesDetailsPresenter?.getTeamsData(apiURL: ApiURLs.leagueTeams.rawValue, id: leagueID ?? "")
-
+        
+        leaguesDetailsPresenter?.getEventsData(apiURL: ApiURLs.leagueEvents.rawValue, id: leagueID ?? "")
   
         self.title = leagueName!
         
@@ -37,22 +33,20 @@ class LeaguesDetailsViewController: UIViewController, LeagueDetailsView{
     
     
     func reloadTable() {
-        DispatchQueue.main.async {
-            self.leagueDetailsTableView.reloadData()
-        }
-        
-       // leaguesDetailsPresenter?.getTeamDetails(apiURL: ApiURLs.teamDetails.rawValue, id: (leaguesDetailsPresenter?.leagueEventsDetails![0].idAwayTeam)!)
+        DispatchQueue.main.asyncAfter(deadline: .now(), execute: { [weak self] in
+            self?.leagueDetailsTableView.reloadData()
+        })
     }
     
     func startAnimating() {
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            self.indicator?.startAnimating()
-        }
+        DispatchQueue.main.asyncAfter(deadline: .now(), execute: { [weak self] in
+            self?.indicator?.startAnimating()
+        })
     }
     
     func stopAnimating() {
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            self.indicator?.stopAnimating()
+        DispatchQueue.main.async{ [weak self] in
+            self?.indicator?.stopAnimating()
         }
     }
 

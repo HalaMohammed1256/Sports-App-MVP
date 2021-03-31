@@ -6,59 +6,60 @@
 //
 
 import UIKit
+import SkeletonView
 
 class LeaguesViewController: UIViewController {
-    
     var leaguesPresenter : LeaguesPresenter?
     var sport : String?
     var urlLink : String?
     var idLeague : String?
     var leagueName : String?
+    var counter  = 0
     var indicator : ActivityIndicator?
-    
-    
-    @IBOutlet weak var LeagueViewTableView: UITableView!{
+  
+        
+    @IBOutlet weak var leagueViewTableView: UITableView!{
         didSet{
-            LeagueViewTableView.delegate = self
-            LeagueViewTableView.dataSource = self
+            leagueViewTableView.delegate = self
+            leagueViewTableView.dataSource = self
         }
     }
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = MainColor.instance.backgroundColor
 
+        leagueViewTableView.rowHeight = 120
+        leagueViewTableView.estimatedRowHeight = 120
+        view.backgroundColor = MainColor.instance.backgroundColor
+        
         leaguesPresenter = LeaguesPresenter(view: self)
         leaguesPresenter?.getAllFilteredLeagues(sport: sport ?? "")
-        
-        indicator = ActivityIndicator(view: LeagueViewTableView)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if counter < 1 {
+        leagueViewTableView.isSkeletonable = true
+        let gradient = SkeletonGradient(baseColor: .concrete)
+        let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+        leagueViewTableView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: animation)
+        }
+        counter += 1
+    }
 }
 
 extension LeaguesViewController : LeaguesView{
     
-    
     func startAnimating() {
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            self.indicator?.startAnimating()
-        }
     }
     
     func reloadTable() {
-        DispatchQueue.main.async {
-            self.LeagueViewTableView.reloadData()
-        }
-       
+            self.leagueViewTableView.reloadData()
     }
-    
+
     func stopAnimating() {
-        DispatchQueue.main.async {
-            self.indicator?.stopAnimating()
-        }
+        self.leagueViewTableView.stopSkeletonAnimation()
+        self.view.hideSkeleton()
     }
-    
-    
-    
 }
