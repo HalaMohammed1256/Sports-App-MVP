@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol LeagueDetailsView: class {
     func reloadTable()
     func startAnimating()
@@ -21,7 +20,6 @@ protocol LeagueDetailsViewPresenter {
     
     var leagueEventsDetails : [Event]?{get set}
     var leagueTeamsDetails : [Team]?{get set}
-    var teamDetails : [Team]?{get set}
 
     
     func getEventsData(apiURL: String, id: String)
@@ -30,7 +28,17 @@ protocol LeagueDetailsViewPresenter {
 
 
 class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
-    var teamDetails: [Team]?{
+    
+    let dispatchGroup = DispatchGroup()
+    
+    var homeTeamDetails = [[Team]](){
+        didSet{
+            view?.reloadTable()
+            view?.stopAnimating()
+        }
+    }
+    
+    var awayTeamDetails = [[Team]](){
         didSet{
             view?.reloadTable()
             view?.stopAnimating()
@@ -38,10 +46,36 @@ class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
     }
     
     var leagueEventsDetails: [Event]?{
+        
         didSet{
-            self.view?.reloadTable()
-            view?.stopAnimating()
+            for i in 0..<leagueEventsDetails!.count{
+                ApiServices.instance.getResponses(url: ApiURLs.teamDetails.rawValue, id: leagueEventsDetails?[i].idHomeTeam ?? "") { (data: Teams?, error) in
+
+                    guard let teamData = data, error == nil else{
+                        return
+                    }
+
+                    self.homeTeamDetails.append(teamData.teams!)
+                    
+
+                }
+                
+                
+                ApiServices.instance.getResponses(url: ApiURLs.teamDetails.rawValue, id: leagueEventsDetails?[i].idAwayTeam ?? "") { (data: Teams?, error) in
+
+                    guard let teamData = data, error == nil else{
+                        return
+                    }
+
+                    self.awayTeamDetails.append(teamData.teams!)
+
+                }
+
+            }
+
         }
+        
+        
     }
     
     
@@ -62,7 +96,7 @@ class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
     
 
     func getEventsData(apiURL: String, id: String) {
-        
+                
         view?.startAnimating()
         
         ApiServices.instance.getResponses(url: apiURL, id: id) { (data: EventsModel?, error) in
@@ -73,7 +107,7 @@ class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
             
             self.leagueEventsDetails = eventData.events
         }
-        //view?.reloadTable()
+        
         
     }
     
@@ -91,43 +125,12 @@ class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
             
             self.leagueTeamsDetails = teamData.teams
         }
-        
-        //view?.reloadTable()
+    
     }
     
+
     
-    func getTeamDetails(apiURL: String, id: String) {
-        
-        ApiServices.instance.getResponses(url: apiURL, id: id) { [weak self] (data: Teams?, error) in
-            
-            guard let teamData = data, error == nil else{
-                return
-            }
-            
-            self?.teamDetails = teamData.teams!
-        }
-        
-    }
+    
 }
 
 
-
-//func getResponse(apiURL: String, id: String) {
-//
-//        view?.startAnimating()
-//
-//        ApiServices.instance.getResponses(url: apiURL, id: id) { [weak self] (dataModel: model, error) in
-//
-//
-//            guard let model = dataModel, error == nil else{
-//                return
-//            }
-//
-//            if model is Events{
-//                self?.leagueDataDetails = (dataModel as! Events).events
-//            }
-//
-//        }
-//
-//
-//    }

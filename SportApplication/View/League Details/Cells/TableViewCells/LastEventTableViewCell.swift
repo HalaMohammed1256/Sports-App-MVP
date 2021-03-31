@@ -10,6 +10,24 @@ import UIKit
 
 class LastEventTableViewCell: UITableViewCell {
     
+    
+    var homeTeamDetails : [[Team]]?{
+        didSet{
+            DispatchQueue.main.async {
+                self.lastTableView.reloadData()
+            }
+        }
+    }
+    
+    var awayTeamDetails : [[Team]]?{
+        didSet{
+            DispatchQueue.main.async {
+                self.lastTableView.reloadData()
+            }
+        }
+    }
+    
+    
     var leagueEventsDetails : [Event]?{
         
         didSet{
@@ -58,9 +76,28 @@ extension LastEventTableViewCell : UITableViewDataSource, UITableViewDelegate{
         }
         
         cell.layer.cornerRadius = 20
+
         
-        cell.firstImageView.sd_setImage(with: URL(string:  (leagueEventsDetails?[indexPath.row].strThumb!)!), placeholderImage: UIImage(named: ""))
-        cell.secondImageView.sd_setImage(with: URL(string:  (leagueEventsDetails?[indexPath.row].strThumb!)!), placeholderImage: UIImage(named: ""))
+        if (homeTeamDetails?.count)! > indexPath.row {
+            
+            cell.firstImageView.sd_setImage(with: URL(string: homeTeamDetails![indexPath.row][0].strTeamBadge!), placeholderImage: UIImage(named: ""))
+            
+            cell.secondImageView.sd_setImage(with: URL(string: awayTeamDetails![indexPath.row][0].strTeamBadge!), placeholderImage: UIImage(named: ""))
+            
+        }
+        
+        
+        cell.firstScoreLabel.text = leagueEventsDetails?[indexPath.row].intHomeScore
+        cell.firstScoreLabel.backgroundColor = MainColor.instance.secondaryColor
+        cell.firstScoreLabel.layer.cornerRadius = 12.5
+        cell.firstScoreLabel.layer.masksToBounds = true
+        
+        cell.secondScoreLabel.text = leagueEventsDetails?[indexPath.row].intAwayScore
+        cell.secondScoreLabel.backgroundColor = MainColor.instance.secondaryColor
+        cell.secondScoreLabel.layer.masksToBounds = true
+        cell.secondScoreLabel.layer.cornerRadius = 12.5
+        
+        
         
         cell.firstNameLabel.text = leagueEventsDetails?[indexPath.row].strHomeTeam!
         cell.secondNameLabel.text = leagueEventsDetails?[indexPath.row].strAwayTeam!

@@ -20,7 +20,7 @@ extension LeaguesDetailsViewController : UITableViewDelegate, UITableViewDataSou
         case 0:
             heightForRow = leagueDetailsTableView.frame.height*0.22    // upcoming collection view
         case 1:
-            heightForRow = leagueDetailsTableView.frame.height*0.43    // last table view
+            heightForRow = leagueDetailsTableView.frame.height*0.47    // last table view
 
         case 2:
             heightForRow = leagueDetailsTableView.frame.height*0.2    // team collection view
@@ -42,6 +42,7 @@ extension LeaguesDetailsViewController : UITableViewDelegate, UITableViewDataSou
         return 1
         
     }
+    
     
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -74,7 +75,8 @@ extension LeaguesDetailsViewController : UITableViewDelegate, UITableViewDataSou
             }
 
             cell.leagueEventsDetails = leaguesDetailsPresenter?.leagueEventsDetails
-            cell.homeTeamDetails = leaguesDetailsPresenter?.teamDetails
+            cell.homeTeamDetails = leaguesDetailsPresenter?.homeTeamDetails
+            cell.awayTeamDetails = leaguesDetailsPresenter?.awayTeamDetails
             
             //cell.awayTeamDetails = leaguesDetailsPresenter?.teamDetails
             
@@ -88,6 +90,8 @@ extension LeaguesDetailsViewController : UITableViewDelegate, UITableViewDataSou
             }
             
             cell.leagueEventsDetails = leaguesDetailsPresenter?.leagueEventsDetails
+            cell.homeTeamDetails = leaguesDetailsPresenter?.homeTeamDetails
+            cell.awayTeamDetails = leaguesDetailsPresenter?.awayTeamDetails
             
             
             return cell

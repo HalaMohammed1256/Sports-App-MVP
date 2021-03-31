@@ -11,17 +11,20 @@ class UpcomingEventTableViewCell: UITableViewCell{
 
 
     let mainColor = MainColor()
-    var presenter : LeagueDetailsPresenter?
     
-    var homeTeamDetails : [Team]?{
+    var homeTeamDetails : [[Team]]?{
         didSet{
-            self.collectionView.reloadData()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
     }
     
-    var awayTeamDetails : [Team]?{
+    var awayTeamDetails : [[Team]]?{
         didSet{
-            self.collectionView.reloadData()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
     }
     
@@ -84,14 +87,15 @@ extension UpcomingEventTableViewCell: UICollectionViewDelegate, UICollectionView
         cell.secondNameLabel.text = leagueEventsDetails?[indexPath.row].strAwayTeam!
         
         cell.dateLabel.text = "\((leagueEventsDetails?[indexPath.row].strTime)!)\n\((leagueEventsDetails?[indexPath.row].dateEvent)!)"
+
         
-        
-        if (homeTeamDetails?.count)! > indexPath.row{
-       cell.firstImageView.sd_setImage(with: URL(string: homeTeamDetails![0].strTeamBadge!), placeholderImage: UIImage(named: ""))
+        if (homeTeamDetails?.count)! > indexPath.row {
+            
+            cell.firstImageView.sd_setImage(with: URL(string: homeTeamDetails![indexPath.row][0].strTeamBadge!), placeholderImage: UIImage(named: ""))
+            
+            cell.secondImageView.sd_setImage(with: URL(string: awayTeamDetails![indexPath.row][0].strTeamBadge!), placeholderImage: UIImage(named: ""))
+            
         }
-//        
-//        cell.secondImageView.sd_setImage(with: URL(string:  awayTeamDetails![0].strTeamBadge!), placeholderImage: UIImage(named: ""))
-//        
         
         return cell
         

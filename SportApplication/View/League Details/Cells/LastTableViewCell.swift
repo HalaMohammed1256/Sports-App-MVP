@@ -17,6 +17,10 @@ class LastTableViewCell: UITableViewCell {
     @IBOutlet weak var secondImageView: UIImageView!
     @IBOutlet weak var secondNameLabel: UILabel!
     
+    @IBOutlet weak var firstScoreLabel: UILabel!
+    @IBOutlet weak var secondScoreLabel: UILabel!
+    
+    
     
 
     override func awakeFromNib() {
