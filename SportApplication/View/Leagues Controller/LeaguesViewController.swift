@@ -14,10 +14,9 @@ class LeaguesViewController: UIViewController {
     var urlLink : String?
     var idLeague : String?
     var leagueName : String?
+    var leagueYoutubeLink : String?
+    var leagueImage : String?
     var counter  = 0
-    var indicator : ActivityIndicator?
-  
-        
     @IBOutlet weak var leagueViewTableView: UITableView!{
         didSet{
             leagueViewTableView.delegate = self

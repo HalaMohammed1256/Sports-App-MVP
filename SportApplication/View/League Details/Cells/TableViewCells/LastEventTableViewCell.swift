@@ -39,6 +39,8 @@ class LastEventTableViewCell: UITableViewCell {
         didSet{
             lastTableView.dataSource = self
             lastTableView.delegate = self
+            
+            lastTableView.allowsSelection = false
         }
         
     }

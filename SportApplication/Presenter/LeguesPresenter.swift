@@ -21,6 +21,8 @@ protocol LeaguesViewPresenter{
 }
 
 class LeaguesPresenter: LeaguesViewPresenter{
+    
+    
     var leaguesDetails = [[LeagueDetails]]()
     let dispatchGroup = DispatchGroup()
     weak var view : LeaguesView?
@@ -63,5 +65,6 @@ class LeaguesPresenter: LeaguesViewPresenter{
             }
         
        
+}
 }
 }
