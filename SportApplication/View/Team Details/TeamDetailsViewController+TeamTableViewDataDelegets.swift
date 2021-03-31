@@ -17,12 +17,11 @@ extension TeamDetailsViewController : UITableViewDelegate, UITableViewDataSource
 
         switch indexPath.section {
         case 0:
-            heightForRow = teamDetailsTableView.frame.height*0.56    // upcoming collection view
+            heightForRow = teamDetailsTableView.frame.height*0.56
         case 1:
-            heightForRow = teamDetailsTableView.frame.height*0.35    // last table view
-
+            heightForRow = teamDetailsTableView.frame.height*0.35
         case 2:
-            heightForRow = teamDetailsTableView.frame.height*0.052    // team collection view
+            heightForRow = teamDetailsTableView.frame.height*0.052
         default:
             heightForRow = 0.0
         }
@@ -40,28 +39,6 @@ extension TeamDetailsViewController : UITableViewDelegate, UITableViewDataSource
         
     }
     
-    
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//
-//        var titleOfSections = ""
-//
-//        switch section {
-//        case 0:
-//            titleOfSections = "Upcoming Events"    // upcoming collection view
-//        case 1:
-//            titleOfSections = "Last Events"    // last table view
-//
-//        case 2:
-//            titleOfSections = "Teams"    // team collection view
-//        default:
-//            titleOfSections = ""
-//        }
-//
-//        return titleOfSections
-//
-//    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.section {
@@ -70,10 +47,14 @@ extension TeamDetailsViewController : UITableViewDelegate, UITableViewDataSource
             guard let cell = teamDetailsTableView.dequeueReusableCell(withIdentifier: String(describing: ImagesTableViewCell.self), for: indexPath)  as? ImagesTableViewCell else {
                 return UITableViewCell()
             }
-
             
+            cell.teamLogo.setImage(url: team?.strTeamBadge ?? "")
+            cell.teamStadiumImage.setImage(url: team?.strStadiumThumb ?? "")
+            cell.teamNameAndDateLabel.text = team?.strTeam ?? "" + String((team?.intFormedYear)!)
+            cell.leagueNameLabel.text = team?.strLeague
+            cell.StadiumNameLabel.text = team?.strStadium
+            cell.countryNameLabel.text = team?.strCountry
             return cell
-            
             
         case 1:
             
@@ -81,6 +62,7 @@ extension TeamDetailsViewController : UITableViewDelegate, UITableViewDataSource
                 return UITableViewCell()
             }
             
+            cell.descriptionTextView.text = team?.strDescriptionEN
             
             return cell
             
@@ -91,6 +73,27 @@ extension TeamDetailsViewController : UITableViewDelegate, UITableViewDataSource
             guard let cell = teamDetailsTableView.dequeueReusableCell(withIdentifier: String(describing: ContactsTableViewCell.self), for: indexPath)  as? ContactsTableViewCell else {
                 return UITableViewCell()
             }
+            
+            cell.facebookAction = { [weak self] in
+                self?.urlLink = self?.team?.strFacebook
+                
+                self?.performSegue(withIdentifier: "teamContact", sender: self)
+            }
+            
+            
+            cell.twitterAction = { [weak self] in
+                self?.urlLink = self?.team?.strTwitter
+                
+                self?.performSegue(withIdentifier: "teamContact", sender: self)
+            }
+            
+            cell.instagramAction = { [weak self] in
+                self?.urlLink = self?.team?.strInstagram
+                
+                self?.performSegue(withIdentifier: "teamContact", sender: self)
+            }
+            
+            
             
             
             return cell
@@ -104,6 +107,12 @@ extension TeamDetailsViewController : UITableViewDelegate, UITableViewDataSource
     }
     
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let webViewDestination = segue.destination as? WebViewController
+        
+        if segue.identifier == "teamContact"{
+            webViewDestination?.urlLink = "https://" + self.urlLink!
+        }
+    }
 }
 

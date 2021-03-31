@@ -62,7 +62,7 @@ extension TeamsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
             return UICollectionViewCell()
         }
         
-        cell.teamImageView.sd_setImage(with: URL(string:  (leagueTeamsDetails?[indexPath.row].strTeamBadge!)!), placeholderImage: UIImage(named: ""))
+        cell.teamImageView.setImage(url: (leagueTeamsDetails?[indexPath.row].strTeamBadge!)!)
         
         
         return cell

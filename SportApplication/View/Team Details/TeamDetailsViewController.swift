@@ -9,6 +9,9 @@ import UIKit
 
 class TeamDetailsViewController: UIViewController {
     
+    var team : Team?
+    var urlLink : String?
+    
     @IBOutlet weak var teamDetailsTableView: UITableView!{
         didSet{
             teamDetailsTableView.dataSource = self

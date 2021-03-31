@@ -10,12 +10,13 @@ import UIKit
 class ImagesTableViewCell: UITableViewCell {
     
     
-    @IBOutlet weak var teamImageView: UIImageView!
+    @IBOutlet weak var teamStadiumImage: UIImageView!
     @IBOutlet weak var teamNameAndDateLabel: UILabel!
     @IBOutlet weak var leagueNameLabel: UILabel!
     @IBOutlet weak var StadiumNameLabel: UILabel!
     @IBOutlet weak var countryNameLabel: UILabel!
     
+    @IBOutlet weak var teamLogo: UIImageView!
     
     
 

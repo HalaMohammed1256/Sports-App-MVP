@@ -48,6 +48,7 @@ class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
     var leagueEventsDetails: [Event]?{
         
         didSet{
+            if !leagueEventsDetails!.isEmpty{
             for i in 0..<leagueEventsDetails!.count{
                 ApiServices.instance.getResponses(url: ApiURLs.teamDetails.rawValue, id: leagueEventsDetails?[i].idHomeTeam ?? "") { (data: Teams?, error) in
 
@@ -75,7 +76,7 @@ class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
 
         }
         
-        
+        }
     }
     
     

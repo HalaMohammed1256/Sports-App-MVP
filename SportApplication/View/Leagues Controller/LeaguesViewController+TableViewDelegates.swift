@@ -21,13 +21,13 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
             return UITableViewCell()
         }
         
-        leagueCell.leaugueImageView.sd_imageIndicator =  SDWebImageActivityIndicator.gray
         if (leaguesPresenter?.leaguesDetails.count)! > indexPath.row {
             
             leagueCell.LeagueNameLabel.text = leaguesPresenter?.leaguesDetails[indexPath.row][0].strLeague
+            
             leagueCell.leaugueImageView.layer.cornerRadius = 12
             
-            leagueCell.leaugueImageView.sd_setImage(with: URL(string: (leaguesPresenter?.leaguesDetails[indexPath.row][0].strBadge) ?? ""), placeholderImage: UIImage(named: "no_internet"))
+            leagueCell.leaugueImageView.setImage(url: (leaguesPresenter?.leaguesDetails[indexPath.row][0].strBadge) ?? "")
             
             if leaguesPresenter?.leaguesDetails[indexPath.row][0].strYoutube != ""{
                 

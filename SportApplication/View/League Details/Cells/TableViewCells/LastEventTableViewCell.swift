@@ -78,11 +78,11 @@ extension LastEventTableViewCell : UITableViewDataSource, UITableViewDelegate{
         cell.layer.cornerRadius = 20
 
         
-        if (homeTeamDetails?.count)! > indexPath.row {
+        if (homeTeamDetails?.count)! > indexPath.row || (awayTeamDetails?.count)! > indexPath.row {
             
-            cell.firstImageView.sd_setImage(with: URL(string: homeTeamDetails![indexPath.row][0].strTeamBadge!), placeholderImage: UIImage(named: ""))
+            cell.firstImageView.setImage(url: homeTeamDetails![indexPath.row][0].strTeamBadge!)
             
-            cell.secondImageView.sd_setImage(with: URL(string: awayTeamDetails![indexPath.row][0].strTeamBadge!), placeholderImage: UIImage(named: ""))
+            cell.secondImageView.setImage(url: awayTeamDetails![indexPath.row][0].strTeamBadge!)
             
         }
         
