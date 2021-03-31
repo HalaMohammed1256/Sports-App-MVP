@@ -13,6 +13,7 @@ class LeaguesViewController: UIViewController {
     var sport : String?
     var urlLink : String?
     var idLeague : String?
+    var leagueName : String?
     var indicator : ActivityIndicator?
     
     

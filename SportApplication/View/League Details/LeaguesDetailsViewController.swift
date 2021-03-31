@@ -9,10 +9,11 @@ import UIKit
 
 class LeaguesDetailsViewController: UIViewController, LeagueDetailsView{
     
-    
-    
+        
     var leaguesDetailsPresenter : LeagueDetailsPresenter?
     var leagueID : String?
+    var leagueName : String?
+    
     var indicator : ActivityIndicator?
     @IBOutlet weak var leagueDetailsTableView: UITableView!
     
@@ -23,18 +24,11 @@ class LeaguesDetailsViewController: UIViewController, LeagueDetailsView{
         leaguesDetailsPresenter = LeagueDetailsPresenter(view: self)
         
         leaguesDetailsPresenter?.getEventsData(apiURL: ApiURLs.leagueEvents.rawValue, id: leagueID ?? "")
-        
         leaguesDetailsPresenter?.getTeamsData(apiURL: ApiURLs.leagueTeams.rawValue, id: leagueID ?? "")
-        
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
-            self?.leaguesDetailsPresenter?.getTeamDetails(apiURL: ApiURLs.teamDetails.rawValue, id: (self?.leaguesDetailsPresenter?.leagueEventsDetails![0].idHomeTeam!)!)
-        }
-        
 
   
-      
-    
+        self.title = leagueName!
+        
         indicator = ActivityIndicator(view: leagueDetailsTableView)
     }
     

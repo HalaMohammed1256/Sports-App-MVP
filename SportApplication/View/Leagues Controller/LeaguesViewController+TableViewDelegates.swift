@@ -58,6 +58,7 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         self.idLeague = leaguesPresenter?.leaguesDetails[indexPath.row][0].idLeague
+        self.leagueName = leaguesPresenter?.leaguesDetails[indexPath.row][0].strLeague
         
         performSegue(withIdentifier: "leagueDetails", sender: self)
         
@@ -77,6 +78,7 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
             webViewDestination!.urlLink = "https://" + urlLink!
         }else if identifier == "leagueDetails"{
             leagueDetailsDestination!.leagueID = idLeague
+            leagueDetailsDestination!.leagueName = leagueName
         }
               
     }
