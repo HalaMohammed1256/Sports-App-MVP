@@ -28,7 +28,7 @@ class ApiServices{
 
                 
                 completion(data, nil)
-                print("Team: \(url+id)")
+//                print("Team: \(url+id)")
 
             }catch{
                 completion(nil, error)
