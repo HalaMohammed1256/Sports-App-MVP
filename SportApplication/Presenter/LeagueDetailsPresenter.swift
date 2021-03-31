@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 protocol LeagueDetailsView: class {
     func reloadTable()
@@ -16,7 +17,7 @@ protocol LeagueDetailsView: class {
 
 protocol LeagueDetailsViewPresenter {
     
-    init(view: LeagueDetailsView)
+    init(view: LeagueDetailsView, delegate: AppDelegate)
     
     var leagueEventsDetails : [Event]?{get set}
     var leagueTeamsDetails : [Team]?{get set}
@@ -24,12 +25,33 @@ protocol LeagueDetailsViewPresenter {
     
     func getEventsData(apiURL: String, id: String)
     func getTeamsData(apiURL: String, id: String)
+    
+    func saveLeagueToCoreData(leagueID: String, leagueName: String, leagueYoutubeLink: String, leagueImage: String)
+    func deleteLeaguefromCoreData()
 }
 
 
 class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
     
+    
+    let delegate : AppDelegate?
+    var favoriteLeague : NSManagedObject?
+    
     let dispatchGroup = DispatchGroup()
+    
+    weak var view : LeagueDetailsView?
+    
+    required init(view: LeagueDetailsView, delegate: AppDelegate) {
+        self.view = view
+        self.delegate = delegate
+    }
+    
+    var leagueTeamsDetails : [Team]?{
+        didSet{
+            self.view?.reloadTable()
+            view?.stopAnimating()
+        }
+    }
     
     var homeTeamDetails = [[Team]](){
         didSet{
@@ -80,19 +102,6 @@ class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
     }
     
     
-    var leagueTeamsDetails : [Team]?{
-        didSet{
-            self.view?.reloadTable()
-            view?.stopAnimating()
-        }
-    }
-    
-    weak var view : LeagueDetailsView?
-    
-    required init(view: LeagueDetailsView) {
-        self.view = view
-    }
-    
  
     
 
@@ -127,6 +136,48 @@ class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
             self.leagueTeamsDetails = teamData.teams
         }
     
+    }
+    
+    
+    // coreData
+    func saveLeagueToCoreData(leagueID: String, leagueName: String, leagueYoutubeLink: String, leagueImage: String){
+        
+        let context = delegate!.persistentContainer.viewContext
+        let favoriteEntity = NSEntityDescription.entity(forEntityName: "FavoriteLeague", in: context)
+        let favoriteLeagueRow = NSManagedObject(entity: favoriteEntity!, insertInto: context)
+        
+        favoriteLeagueRow.setValue(leagueID, forKey: "leagueID")
+        favoriteLeagueRow.setValue(leagueName, forKey: "leagueName")
+        favoriteLeagueRow.setValue(leagueYoutubeLink, forKey: "leagueYoutubeLink")
+        favoriteLeagueRow.setValue(leagueImage, forKey: "leagueImage")
+        
+        
+        favoriteLeague = favoriteLeagueRow
+        
+        do{
+            try context.save()
+            print("Data added successfully")
+        }catch let error as NSError{
+            print(error)
+        }
+        
+        delegate!.saveContext()
+    }
+    
+    
+    func deleteLeaguefromCoreData(){
+        
+        let context = delegate!.persistentContainer.viewContext
+        context.delete(favoriteLeague!)
+        
+        do{
+            try context.save()
+            print("Data deleted successfully")
+        }catch let error as NSError{
+            print(error)
+        }
+        
+        delegate!.saveContext()
     }
     
 

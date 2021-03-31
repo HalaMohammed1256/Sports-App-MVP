@@ -12,6 +12,8 @@
 		2B2FFDBA260AC3BE00B98699 /* SportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FFDB9260AC3BE00B98699 /* SportModel.swift */; };
 		2B2FFDBF260AC4ED00B98699 /* ApiURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2FFDBE260AC4ED00B98699 /* ApiURLs.swift */; };
 		2B2FFDCD260ADAA900B98699 /* Merriweather-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B2FFDCC260ADA3900B98699 /* Merriweather-Black.ttf */; };
+		2B4D34662615082E009D60C4 /* FavoriteViewController+FavoriteLeagueTableViewDelegets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D34652615082E009D60C4 /* FavoriteViewController+FavoriteLeagueTableViewDelegets.swift */; };
+		2B4D346B26151157009D60C4 /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D346A26151157009D60C4 /* FavoritePresenter.swift */; };
 		2B870D862606512200C47105 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B870D852606512200C47105 /* AppDelegate.swift */; };
 		2B870D882606512200C47105 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B870D872606512200C47105 /* SceneDelegate.swift */; };
 		2B870D8D2606512200C47105 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B870D8B2606512200C47105 /* Main.storyboard */; };
@@ -90,6 +92,8 @@
 		2B2FFDB9260AC3BE00B98699 /* SportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportModel.swift; sourceTree = "<group>"; };
 		2B2FFDBE260AC4ED00B98699 /* ApiURLs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiURLs.swift; sourceTree = "<group>"; };
 		2B2FFDCC260ADA3900B98699 /* Merriweather-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Merriweather-Black.ttf"; sourceTree = "<group>"; };
+		2B4D34652615082E009D60C4 /* FavoriteViewController+FavoriteLeagueTableViewDelegets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteViewController+FavoriteLeagueTableViewDelegets.swift"; sourceTree = "<group>"; };
+		2B4D346A26151157009D60C4 /* FavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
 		2B870D822606512200C47105 /* SportApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B870D852606512200C47105 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B870D872606512200C47105 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -372,6 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				2B870DCF26065D8A00C47105 /* FavoriteViewController.swift */,
+				2B4D34652615082E009D60C4 /* FavoriteViewController+FavoriteLeagueTableViewDelegets.swift */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
@@ -447,6 +452,7 @@
 				8807803D260CA84200432655 /* SportsPresenter.swift */,
 				88078072260D61AB00432655 /* LeguesPresenter.swift */,
 				2B9CAEA52611E05500AE3BE8 /* LeagueDetailsPresenter.swift */,
+				2B4D346A26151157009D60C4 /* FavoritePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -721,8 +727,10 @@
 				2BCC825926091BEC000EB543 /* HomeViewController+SportCollectionViewDelegates.swift in Sources */,
 				2B88DB0B2613DA990001C80B /* ImagesTableViewCell.swift in Sources */,
 				2BCA8496261126A900BA3FE8 /* LastEventTableViewCell.swift in Sources */,
+				2B4D346B26151157009D60C4 /* FavoritePresenter.swift in Sources */,
 				2BCA84A02611286F00BA3FE8 /* LeaguesDetailsViewController+LeaguesDetailsTableViewDelegets.swift in Sources */,
 				2BCC82512609194B000EB543 /* MainColor.swift in Sources */,
+				2B4D34662615082E009D60C4 /* FavoriteViewController+FavoriteLeagueTableViewDelegets.swift in Sources */,
 				2BCA84AA26112D2400BA3FE8 /* UpcomingCollectionViewCell.swift in Sources */,
 				885D55372610DC2200E1651A /* ActivityIndicator.swift in Sources */,
 				884CB4FE2614002400C9D481 /* ImageViewExtensions.swift in Sources */,

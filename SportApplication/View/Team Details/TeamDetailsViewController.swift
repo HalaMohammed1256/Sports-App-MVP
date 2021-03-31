@@ -16,6 +16,7 @@ class TeamDetailsViewController: UIViewController {
         didSet{
             teamDetailsTableView.dataSource = self
             teamDetailsTableView.delegate = self
+            teamDetailsTableView.allowsSelection = false
         }
     }
     

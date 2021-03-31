@@ -59,6 +59,8 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
         
         self.idLeague = leaguesPresenter?.leaguesDetails[indexPath.row][0].idLeague
         self.leagueName = leaguesPresenter?.leaguesDetails[indexPath.row][0].strLeague
+        self.leagueYoutubeLink = leaguesPresenter?.leaguesDetails[indexPath.row][0].strYoutube
+        self.leagueImage = leaguesPresenter?.leaguesDetails[indexPath.row][0].strBadge
         
         performSegue(withIdentifier: "leagueDetails", sender: self)
         
@@ -79,6 +81,8 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
         }else if identifier == "leagueDetails"{
             leagueDetailsDestination!.leagueID = idLeague
             leagueDetailsDestination!.leagueName = leagueName
+            leagueDetailsDestination?.leagueYoutubeLink = leagueYoutubeLink
+            leagueDetailsDestination?.leagueImage = leagueImage
         }
               
     }

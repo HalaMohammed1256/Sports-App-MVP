@@ -17,7 +17,7 @@ extension TeamDetailsViewController : UITableViewDelegate, UITableViewDataSource
 
         switch indexPath.section {
         case 0:
-            heightForRow = teamDetailsTableView.frame.height*0.56
+            heightForRow = teamDetailsTableView.frame.height*0.594
         case 1:
             heightForRow = teamDetailsTableView.frame.height*0.35
         case 2:
@@ -50,7 +50,7 @@ extension TeamDetailsViewController : UITableViewDelegate, UITableViewDataSource
             
             cell.teamLogo.setImage(url: team?.strTeamBadge ?? "")
             cell.teamStadiumImage.setImage(url: team?.strStadiumThumb ?? "")
-            cell.teamNameAndDateLabel.text = team?.strTeam ?? "" + String((team?.intFormedYear)!)
+            cell.teamNameAndDateLabel.text = "\(team?.strTeam ?? "" ) \(team?.intFormedYear ?? "")"
             cell.leagueNameLabel.text = team?.strLeague
             cell.StadiumNameLabel.text = team?.strStadium
             cell.countryNameLabel.text = team?.strCountry
@@ -63,6 +63,7 @@ extension TeamDetailsViewController : UITableViewDelegate, UITableViewDataSource
             }
             
             cell.descriptionTextView.text = team?.strDescriptionEN
+            cell.descriptionTextView.isEditable = false
             
             return cell
             

@@ -35,6 +35,8 @@ class LeagueViewTableViewCell: UITableViewCell {
     }
     
     
+    
+    
     @IBAction func youtubeChannelTapped(_ sender: Any) {
         youtubeChannelAction?()
     }

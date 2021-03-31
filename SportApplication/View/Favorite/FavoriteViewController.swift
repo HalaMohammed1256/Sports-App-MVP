@@ -6,24 +6,40 @@
 //
 
 import UIKit
+import Reachability
 
-class FavoriteViewController: UIViewController {
+class FavoriteViewController: UIViewController, FavoriteView{
+    
+    var idLeague : String?
+    var leagueName : String?
+    var leagueYoutubeLink : String?
+    var urlLink : String?
+    var favoritePresenter : FavoritePresenter?
+    let delegate = (UIApplication.shared.delegate as! AppDelegate)
+    
+    let reachability = try! Reachability()
+    
+    @IBOutlet weak var favoriteTableView: UITableView!{
+        didSet{
+            favoriteTableView.delegate = self
+            favoriteTableView.dataSource = self
+        }
+    }
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        favoritePresenter = FavoritePresenter.init(view: self, delegate: delegate)
+        favoritePresenter?.fetchFavoriteLeaguesFromCoreData()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func reloadTable() {
+        DispatchQueue.main.async { [self] in
+            favoriteTableView.reloadData()
+        }
     }
-    */
 
 }
