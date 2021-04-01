@@ -40,7 +40,7 @@ class LeaguesViewController: UIViewController {
         
         if counter < 1 {
         leagueViewTableView.isSkeletonable = true
-        let gradient = SkeletonGradient(baseColor: .concrete)
+        let gradient = SkeletonGradient(baseColor: .clouds)
         let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
         leagueViewTableView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: animation)
         }

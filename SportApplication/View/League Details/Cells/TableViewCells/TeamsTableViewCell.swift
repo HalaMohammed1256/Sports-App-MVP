@@ -11,7 +11,7 @@ class TeamsTableViewCell: UITableViewCell{
     
     var didSelectItemAtIndexPath : ((IndexPath) -> Void)?
     
-    var leagueTeamsDetails : [Team]?{
+    var leagueTeamsDetails = [Team](){
         didSet{
             DispatchQueue.main.async {
                 self.teamCollectionView.reloadData()
@@ -50,7 +50,7 @@ extension TeamsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return leagueTeamsDetails?.count ?? 0
+        return leagueTeamsDetails.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -62,7 +62,7 @@ extension TeamsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
             return UICollectionViewCell()
         }
         
-        cell.teamImageView.setImage(url: (leagueTeamsDetails?[indexPath.row].strTeamBadge!)!)
+        cell.teamImageView.setImage(url: (leagueTeamsDetails[indexPath.row].strTeamBadge ?? ""))
         
         
         return cell

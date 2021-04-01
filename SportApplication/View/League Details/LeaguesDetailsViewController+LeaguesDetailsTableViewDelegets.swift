@@ -89,7 +89,7 @@ extension LeaguesDetailsViewController : UITableViewDelegate, UITableViewDataSou
                 return UITableViewCell()
             }
             
-            cell.leagueEventsDetails = leaguesDetailsPresenter?.leagueEventsDetails
+            cell.leagueEventsDetails = leaguesDetailsPresenter!.leagueEventsDetails
             cell.homeTeamDetails = leaguesDetailsPresenter!.homeTeamDetails
             cell.awayTeamDetails = leaguesDetailsPresenter!.awayTeamDetails
             
@@ -102,7 +102,7 @@ extension LeaguesDetailsViewController : UITableViewDelegate, UITableViewDataSou
                 return UITableViewCell()
             }
             
-            cell.leagueTeamsDetails = leaguesDetailsPresenter?.leagueTeamsDetails
+            cell.leagueTeamsDetails = leaguesDetailsPresenter!.leagueTeamsDetails
             
             cell.didSelectItemAtIndexPath = { [weak self] indexPath in
                 self?.indexPath = indexPath.row

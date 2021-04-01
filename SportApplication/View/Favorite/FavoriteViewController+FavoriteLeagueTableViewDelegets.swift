@@ -39,7 +39,7 @@ extension FavoriteViewController : UITableViewDelegate, UITableViewDataSource{
             if reachability.connection == .unavailable{
                 
                 leagueCell.youtubeChannelAction = {
-                    self.favoritePresenter?.showAlert()
+                    self.showAlert()
                 }
                 
             }else{
@@ -70,7 +70,7 @@ extension FavoriteViewController : UITableViewDelegate, UITableViewDataSource{
         
         if reachability.connection == .unavailable{
                         
-            favoritePresenter?.showAlert()
+               showAlert()
             
             
         }else{
@@ -107,11 +107,7 @@ extension FavoriteViewController : UITableViewDelegate, UITableViewDataSource{
         }
         
     }
-    
-
-    
-    
-    
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let webViewDestination = segue.destination as? WebViewController
@@ -129,6 +125,10 @@ extension FavoriteViewController : UITableViewDelegate, UITableViewDataSource{
             leagueDetailsDestination?.leagueYoutubeLink = leagueYoutubeLink
         }
               
+    }
+    
+    func showAlert(){
+        AlertViewBuilder.showAlert(presentedView: self, message: "Check Your Internet Connection!", view: self.favoriteTableView)
     }
     
 }

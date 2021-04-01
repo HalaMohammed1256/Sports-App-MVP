@@ -60,7 +60,6 @@ extension LeaguesViewController : UITableViewDelegate, SkeletonTableViewDataSour
             
         }
        
-        
         return leagueCell
         
     }
@@ -74,7 +73,6 @@ extension LeaguesViewController : UITableViewDelegate, SkeletonTableViewDataSour
         self.leagueImage = leaguesPresenter?.leaguesDetails[indexPath.row][0].strBadge
         
         performSegue(withIdentifier: "leagueDetails", sender: self)
- 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

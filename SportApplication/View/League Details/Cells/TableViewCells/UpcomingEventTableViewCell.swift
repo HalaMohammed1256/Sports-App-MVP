@@ -19,12 +19,6 @@ class UpcomingEventTableViewCell: UITableViewCell{
         }
     }
     
-//        didSet{
-//            DispatchQueue.main.async {
-//                self.collectionView.reloadData()
-//            }
-//        }
-//    }
     var leagueEventsDetails = [Event](){
        didSet{
                 DispatchQueue.main.async {
@@ -53,34 +47,44 @@ extension UpcomingEventTableViewCell: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-
-        
+                
         guard  let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: UpcomingCollectionViewCell.self), for: indexPath)  as? UpcomingCollectionViewCell else {
             
             return UICollectionViewCell()
         }
         
-        
-//        cell.backgroundColor = mainColor.backgroundColor
+    
         cell.layer.cornerRadius = 10
         
         
-        
-        cell.firstNameLabel.text = leagueEventsDetails[indexPath.row].strHomeTeam!
-        cell.secondNameLabel.text = leagueEventsDetails[indexPath.row].strAwayTeam!
+        if leagueEventsDetails[indexPath.row].strHomeTeam != nil{
+        cell.firstNameLabel.text = leagueEventsDetails[indexPath.row].strHomeTeam ?? ""
+        cell.secondNameLabel.text = leagueEventsDetails[indexPath.row].strAwayTeam ?? ""
         
         cell.dateLabel.text = "\((leagueEventsDetails[indexPath.row].strTime)!)\n\((leagueEventsDetails[indexPath.row].dateEvent)!)"
 
         
         if (homeTeamDetails.count) > indexPath.row {
-            
-            cell.firstImageView.setImage(url: homeTeamDetails[indexPath.row][0].strTeamBadge ?? "")
+            for i in 0..<homeTeamDetails.count{
+                if leagueEventsDetails[indexPath.row].idHomeTeam ?? "" == homeTeamDetails[i][0].idTeam{
+                cell.firstImageView.setImage(url: homeTeamDetails[i][0].strTeamBadge ?? "")
+                }
+            }
         }
-        if (awayTeamDetails.count) > indexPath.row{
-            
-            cell.secondImageView.setImage(url: awayTeamDetails[indexPath.row][0].strTeamBadge ?? "")
+            if (awayTeamDetails.count) > indexPath.row{
+            for i in 0..<awayTeamDetails.count{
+                if leagueEventsDetails[indexPath.row].idAwayTeam ?? "" == awayTeamDetails[i][0].idTeam{
+                cell.secondImageView.setImage(url: awayTeamDetails[i][0].strTeamBadge ?? "")
+                }
+            }
         }
+            
+        }else{
+            
+           // AlertViewBuilder.showAlert(presentedView: self, message: "There is no data", view: nil)
+            print("there is no data")
+        }
+        
         
         return cell
         
@@ -92,5 +96,5 @@ extension UpcomingEventTableViewCell: UICollectionViewDelegate, UICollectionView
             return CGSize(width: (collectionView.frame.width/2.2), height: collectionView.frame.width/1.85)
     }
     
-    
 }
+

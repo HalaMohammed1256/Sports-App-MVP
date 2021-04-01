@@ -21,8 +21,6 @@ protocol LeaguesViewPresenter{
 }
 
 class LeaguesPresenter: LeaguesViewPresenter{
-    
-    
     var leaguesDetails = [[LeagueDetails]]()
     let dispatchGroup = DispatchGroup()
     weak var view : LeaguesView?
@@ -33,7 +31,7 @@ class LeaguesPresenter: LeaguesViewPresenter{
     var filteredLeagues: [League]?{
        
         didSet{
-         
+            
             for i in 0..<filteredLeagues!.count{
                 dispatchGroup.enter()
                 ApiServices.instance.getResponses(url: ApiURLs.leaguesLookup.rawValue, id: filteredLeagues?[i].idLeague ?? "") { (detailsData: LeaguesDetails?, error) in
@@ -45,6 +43,7 @@ class LeaguesPresenter: LeaguesViewPresenter{
             }
             dispatchGroup.leave()
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self.leaguesDetails.sort(by: {$0[0].strLeague! < $1[0].strLeague!})
                 self.view?.stopAnimating()
                 self.view?.reloadTable()
              
@@ -63,8 +62,5 @@ class LeaguesPresenter: LeaguesViewPresenter{
                 }
                 self.filteredLeagues = data.leagues?.filter({$0.strSport == sport})
             }
-        
-       
-}
 }
 }

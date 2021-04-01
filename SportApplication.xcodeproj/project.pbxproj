@@ -56,6 +56,7 @@
 		884D817B260EA4D4003C7442 /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 884D8178260EA4D4003C7442 /* Ubuntu-Light.ttf */; };
 		884D817C260EA4D4003C7442 /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 884D8179260EA4D4003C7442 /* Ubuntu-Bold.ttf */; };
 		884D8189260EA7F0003C7442 /* JF-Flat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 884D8188260EA7F0003C7442 /* JF-Flat-Regular.ttf */; };
+		884FF72C2615F55C007CE2D5 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884FF72B2615F55C007CE2D5 /* Alert.swift */; };
 		885721F7260F4FC900578E73 /* CountryLeague.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885721F6260F4FC900578E73 /* CountryLeague.swift */; };
 		885A740E26151A7700AA6988 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885A740D26151A7700AA6988 /* ArrayExtensions.swift */; };
 		885D55372610DC2200E1651A /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885D55362610DC2200E1651A /* ActivityIndicator.swift */; };
@@ -147,6 +148,7 @@
 		884D8178260EA4D4003C7442 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Light.ttf"; sourceTree = "<group>"; };
 		884D8179260EA4D4003C7442 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
 		884D8188260EA7F0003C7442 /* JF-Flat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JF-Flat-Regular.ttf"; sourceTree = "<group>"; };
+		884FF72B2615F55C007CE2D5 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		885721F6260F4FC900578E73 /* CountryLeague.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryLeague.swift; sourceTree = "<group>"; };
 		885A740D26151A7700AA6988 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		885D55362610DC2200E1651A /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 				88D130C52611FFAD00E650A7 /* CollectionViewExtentions.swift */,
 				884CB4FD2614002400C9D481 /* ImageViewExtensions.swift */,
 				885A740D26151A7700AA6988 /* ArrayExtensions.swift */,
+				884FF72B2615F55C007CE2D5 /* Alert.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -754,6 +757,7 @@
 				2B870DD826065DC400C47105 /* HomeViewController.swift in Sources */,
 				2B2FFDBF260AC4ED00B98699 /* ApiURLs.swift in Sources */,
 				2B870D902606512200C47105 /* SportApplication.xcdatamodeld in Sources */,
+				884FF72C2615F55C007CE2D5 /* Alert.swift in Sources */,
 				2BA253802610D1D100908E8D /* WebViewController.swift in Sources */,
 				2B870D862606512200C47105 /* AppDelegate.swift in Sources */,
 				2BCA84912611269600BA3FE8 /* UpcomingEventTableViewCell.swift in Sources */,

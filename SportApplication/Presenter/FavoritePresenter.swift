@@ -20,7 +20,6 @@ protocol FavoriteViewPresenter{
     
     func fetchFavoriteLeaguesFromCoreData()
     func deleteLeaguefromCoreData(index: Int)
-    func showAlert()
 }
 
 class FavoritePresenter: FavoriteViewPresenter{
@@ -48,7 +47,6 @@ class FavoritePresenter: FavoriteViewPresenter{
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavoriteLeague")
         
         do{
-            
             favoriteLeaguesArray = try context.fetch(fetchRequest)
             view?.reloadTable()
             
@@ -75,18 +73,5 @@ class FavoritePresenter: FavoriteViewPresenter{
         }
         delegate!.saveContext()
     }
-    
-    
-    func showAlert(){
-        let alert = UIAlertController(title: "Connection Failed", message: "NO INTERNET CONNECTION!", preferredStyle: .alert)
 
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
-            self.view?.reloadTable()
-        }))
-
-        (self.view as! FavoriteViewController).present(alert, animated: true) 
-    }
-    
-    
-    
 }
