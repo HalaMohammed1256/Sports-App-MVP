@@ -7,10 +7,9 @@
 
 import Foundation
 
-protocol SportsView : class {
+protocol SportsView : class, SuperClass {
     func startAnimating()
     func stopAnimating()
-    func reloadCollectionView()
 }
 
 
@@ -24,7 +23,7 @@ class SportsPresenter: SportsViewPresenter {
 
     var sports: [Sport]?{
         didSet{
-            self.view?.reloadCollectionView()
+            self.view?.reloadData()
             view?.stopAnimating()
         }
     }
@@ -37,15 +36,19 @@ class SportsPresenter: SportsViewPresenter {
     
     func getSports() {
         
-        
-        view?.startAnimating()
-        
-        ApiServices.instance.getResponses(url: ApiURLs.allSports.rawValue) { (data: SportsModel?, error) in
-                    
-            guard let data = data, error == nil else{
-                return
+
+            view?.startAnimating()
+            
+            ApiServices.instance.getResponses(url: ApiURLs.allSports.rawValue) { (data: SportsModel?, error) in
+                        
+                guard let data = data, error == nil else{
+                    return
+                }
+                self.sports = (data.sports)!
             }
-            self.sports = (data.sports)!
-        }
+            
+        
     }
+    
+    
 }

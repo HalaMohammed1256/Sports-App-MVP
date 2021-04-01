@@ -62,7 +62,7 @@ class LastEventTableViewCell: UITableViewCell {
 extension LastEventTableViewCell : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return leagueEventsDetails.count 
+        return homeTeamDetails.count 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -102,10 +102,10 @@ extension LastEventTableViewCell : UITableViewDataSource, UITableViewDelegate{
         
         
         
-        cell.firstNameLabel.text = leagueEventsDetails[indexPath.row].strHomeTeam!
-        cell.secondNameLabel.text = leagueEventsDetails[indexPath.row].strAwayTeam!
+        cell.firstNameLabel.text = leagueEventsDetails[indexPath.row].strHomeTeam ?? ""
+        cell.secondNameLabel.text = leagueEventsDetails[indexPath.row].strAwayTeam ?? ""
         
-        cell.dateLabel.text = "\((leagueEventsDetails[indexPath.row].strTime) ?? "")\n\((leagueEventsDetails[indexPath.row].dateEvent)!)"
+        cell.dateLabel.text = "\((leagueEventsDetails[indexPath.row].strTime) ?? "")\n\(leagueEventsDetails[indexPath.row].dateEvent ?? "")"
             
         }else{
             

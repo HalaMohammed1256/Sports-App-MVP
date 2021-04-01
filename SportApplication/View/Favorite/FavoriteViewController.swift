@@ -35,8 +35,14 @@ class FavoriteViewController: UIViewController, FavoriteView{
         favoritePresenter?.fetchFavoriteLeaguesFromCoreData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        favoritePresenter?.fetchFavoriteLeaguesFromCoreData()
+    }
     
-    func reloadTable() {
+    
+    func reloadData() {
         DispatchQueue.main.async { [self] in
             favoriteTableView.reloadData()
         }

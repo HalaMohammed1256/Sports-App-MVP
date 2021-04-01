@@ -14,7 +14,7 @@ extension FavoriteViewController : UITableViewDelegate, UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (favoritePresenter?.favoriteLeaguesArray?.count)!
+        return (favoritePresenter?.favoriteLeaguesArray.count)!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -24,15 +24,15 @@ extension FavoriteViewController : UITableViewDelegate, UITableViewDataSource{
         }
         
         
-        leagueCell.LeagueNameLabel.text = favoritePresenter?.favoriteLeaguesArray![indexPath.row].value(forKey: "leagueName") as? String
+        leagueCell.LeagueNameLabel.text = favoritePresenter?.favoriteLeaguesArray[indexPath.row].value(forKey: "leagueName") as? String
             
         leagueCell.leaugueImageView.layer.cornerRadius = 12
             
-        leagueCell.leaugueImageView.setImage(url: (favoritePresenter?.favoriteLeaguesArray![indexPath.row].value(forKey: "leagueImage") as! String))
+        leagueCell.leaugueImageView.setImage(url: (favoritePresenter?.favoriteLeaguesArray[indexPath.row].value(forKey: "leagueImage") as! String))
         
 
         
-        if (favoritePresenter?.favoriteLeaguesArray![indexPath.row].value(forKey: "leagueYoutubeLink") as! String) != ""{
+        if (favoritePresenter?.favoriteLeaguesArray[indexPath.row].value(forKey: "leagueYoutubeLink") as! String) != ""{
                 
             leagueCell.youtubeChannelIcon.isHidden = false
             
@@ -46,7 +46,7 @@ extension FavoriteViewController : UITableViewDelegate, UITableViewDataSource{
                 
                 leagueCell.youtubeChannelAction = {
                     
-                    if let youtubeLink = self.favoritePresenter?.favoriteLeaguesArray![indexPath.row].value(forKey: "leagueYoutubeLink"){
+                    if let youtubeLink = self.favoritePresenter?.favoriteLeaguesArray[indexPath.row].value(forKey: "leagueYoutubeLink"){
                         self.urlLink = youtubeLink as? String
                     }
                     
@@ -74,9 +74,9 @@ extension FavoriteViewController : UITableViewDelegate, UITableViewDataSource{
             
             
         }else{
-            self.idLeague = favoritePresenter?.favoriteLeaguesArray![indexPath.row].value(forKey: "leagueID") as? String
-            self.leagueName = favoritePresenter?.favoriteLeaguesArray![indexPath.row].value(forKey: "leagueName") as? String
-            self.leagueYoutubeLink = favoritePresenter?.favoriteLeaguesArray![indexPath.row].value(forKey: "leagueYoutubeLink") as? String
+            self.idLeague = favoritePresenter?.favoriteLeaguesArray[indexPath.row].value(forKey: "leagueID") as? String
+            self.leagueName = favoritePresenter?.favoriteLeaguesArray[indexPath.row].value(forKey: "leagueName") as? String
+            self.leagueYoutubeLink = favoritePresenter?.favoriteLeaguesArray[indexPath.row].value(forKey: "leagueYoutubeLink") as? String
             
             performSegue(withIdentifier: "favoriteLeagueDetails", sender: self)
         }
@@ -85,10 +85,11 @@ extension FavoriteViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
+      
+        
+        
         if editingStyle == .delete {
                 
-            
-            if reachability.connection == .unavailable{
                 
                 //remove from core data
                 favoritePresenter?.deleteLeaguefromCoreData(index: indexPath.row)
@@ -96,10 +97,7 @@ extension FavoriteViewController : UITableViewDelegate, UITableViewDataSource{
                 
                 // remove from table
                 tableView.deleteRows(at: [indexPath], with: .fade)
-            }
-        
-            
-        
+                    
             
             
         } else if editingStyle == .insert {

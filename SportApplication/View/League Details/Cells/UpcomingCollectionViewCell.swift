@@ -16,4 +16,6 @@ class UpcomingCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var secondImageView: UIImageView!
     @IBOutlet weak var secondNameLabel: UILabel!
     
+    
+    
 }

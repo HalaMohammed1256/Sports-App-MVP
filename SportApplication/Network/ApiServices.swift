@@ -26,7 +26,6 @@ class ApiServices{
                 let decoder = JSONDecoder()
                 let data = try decoder.decode(T.self, from: responseData)
                 completion(data, nil)
-                print(url + id)
             }catch{
                 completion(nil, error)
             }

@@ -111,8 +111,12 @@ extension TeamDetailsViewController : UITableViewDelegate, UITableViewDataSource
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let webViewDestination = segue.destination as? WebViewController
         
+        guard let url = urlLink else {
+            return
+        }
+        
         if segue.identifier == "teamContact"{
-            webViewDestination?.urlLink = "https://" + self.urlLink!
+            webViewDestination?.urlLink = "https://" + url
         }
     }
 }

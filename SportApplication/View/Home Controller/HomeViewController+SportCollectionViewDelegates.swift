@@ -48,7 +48,7 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
             
         }else{
 
-            cell.sportImageView.setImage(url:   (sportsPresenter?.sports?[indexPath.row].strSportThumb!)!)
+            cell.sportImageView.setImage(url: sportsPresenter?.sports?[indexPath.row].strSportThumb ?? "")
 
             cell.sportNameLabel.text = sportsPresenter?.sports?[indexPath.row].strSport
             cell.sportNameLabel.font = UIFont(name: "Merriweather-Black", size: 15)

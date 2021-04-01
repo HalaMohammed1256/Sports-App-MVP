@@ -8,31 +8,50 @@
 import Foundation
 import CoreData
 
-protocol LeagueDetailsView: class {
-    func reloadTable()
+protocol LeagueDetailsView: class, SuperClass {
+    func reloadData()
     func startAnimating()
     func stopAnimating()
 }
 
 protocol LeagueDetailsViewPresenter {
-    init(view: LeagueDetailsView, delegate: AppDelegate)
+    init(view: LeagueDetailsView, delegate : AppDelegate)
     func getEventsData(apiURL: String, id: String)
     func getTeamsData(apiURL: String, id: String)
     func saveLeagueToCoreData(leagueID: String, leagueName: String, leagueYoutubeLink: String, leagueImage: String)
-    func deleteLeaguefromCoreData()
+    func deleteLeaguefromCoreData(leagueID: String)
 }
 
 class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
     let delegate : AppDelegate?
-    var favoriteLeague : NSManagedObject?
+    var favoriteLeague = NSManagedObject()
     let dispatchGroup = DispatchGroup()
     weak var view : LeagueDetailsView?
     
-    var homeTeamDetails = [[Team]]()
-    var leagueTeamsDetails = [Team]()
-    var awayTeamDetails = [[Team]]()
+    var fetchedLeaguesArray = [NSManagedObject](){
+    didSet{
+        self.view?.reloadData()
+    }
+}
     
-    required init(view: LeagueDetailsView, delegate: AppDelegate) {
+    var homeTeamDetails = [[Team]]()
+    var leagueTeamsDetails = [Team](){
+        didSet{
+            self.view?.stopAnimating()
+            self.view?.reloadData()
+        }
+        
+    }
+    var awayTeamDetails = [[Team]](){
+        didSet{
+            if awayTeamDetails.count == leagueEventsDetails.count{
+                self.view?.stopAnimating()
+                self.view?.reloadData()
+            }
+        }
+    }
+    
+    required init(view: LeagueDetailsView, delegate : AppDelegate) {
         self.view = view
         self.delegate = delegate
     }
@@ -42,30 +61,42 @@ class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
             
             for i in 0..<leagueEventsDetails.count{
                 dispatchGroup.enter()
-                ApiServices.instance.getResponses(url: ApiURLs.teamDetails.rawValue, id: leagueEventsDetails[i].idHomeTeam ?? "") { (data: Teams?, error) in
-                    guard let teamData = data, error == nil else{
-                        return
+                
+                if leagueEventsDetails[i].idHomeTeam != nil{
+                    ApiServices.instance.getResponses(url: ApiURLs.teamDetails.rawValue, id: leagueEventsDetails[i].idHomeTeam ?? "") { (data: Teams?, error) in
+                        guard let teamData = data, error == nil else{
+                            return
+                        }
+                        self.homeTeamDetails.append(teamData.teams!)
                     }
-                    self.homeTeamDetails.append(teamData.teams!)
                 }
             }
             dispatchGroup.leave()
 
             for i in 0..<leagueEventsDetails.count{
                 dispatchGroup.enter()
-                ApiServices.instance.getResponses(url: ApiURLs.teamDetails.rawValue, id: leagueEventsDetails[i].idAwayTeam ?? "") { (data: Teams?, error) in
+                
+                if leagueEventsDetails[i].idAwayTeam != nil{
+                    ApiServices.instance.getResponses(url: ApiURLs.teamDetails.rawValue, id: leagueEventsDetails[i].idAwayTeam ?? "") { (data: Teams?, error) in
 
-                    guard let teamData = data, error == nil else{
-                        return
+                        guard let teamData = data, error == nil else{
+                            return
+                        }
+                        self.awayTeamDetails.append(teamData.teams!)
                     }
-                    self.awayTeamDetails.append(teamData.teams!)
+                }else{
+                    self.view?.stopAnimating()
+                    self.view?.reloadData()
                 }
             }
             dispatchGroup.leave()
+
+
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute:{
+//                self.view?.stopAnimating()
+//                self.view?.reloadTable()
+//                })
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute:{                self.view?.stopAnimating()
-                self.view?.reloadTable()
-                })
           }
     }
 
@@ -130,31 +161,50 @@ class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
     
     // coreData
     func saveLeagueToCoreData(leagueID: String, leagueName: String, leagueYoutubeLink: String, leagueImage: String){
-        let context = delegate!.persistentContainer.viewContext
-        let favoriteEntity = NSEntityDescription.entity(forEntityName: "FavoriteLeague", in: context)
-        let favoriteLeagueRow = NSManagedObject(entity: favoriteEntity!, insertInto: context)
-        favoriteLeagueRow.setValue(leagueID, forKey: "leagueID")
-        favoriteLeagueRow.setValue(leagueName, forKey: "leagueName")
-        favoriteLeagueRow.setValue(leagueYoutubeLink, forKey: "leagueYoutubeLink")
-        favoriteLeagueRow.setValue(leagueImage, forKey: "leagueImage")
-        favoriteLeague = favoriteLeagueRow
-        do{
-            try context.save()
-            print("Data added successfully")
-        }catch let error as NSError{
-            print(error)
-        }
-        delegate!.saveContext()
+        
+        let dataArray = [leagueID, leagueName, leagueYoutubeLink, leagueImage]
+        let KeysArray = ["leagueID", "leagueName", "leagueYoutubeLink", "leagueImage"]
+        
+        CoreDataBuilder.saveToCoreData(delegate: delegate!, entityName: "FavoriteLeague", dataArray: dataArray, KeysArray: KeysArray, removeDataInSameTime: &(favoriteLeague))
     }
-    func deleteLeaguefromCoreData(){
-        let context = delegate!.persistentContainer.viewContext
-        context.delete(favoriteLeague!)
-        do{
-            try context.save()
-            print("Data deleted successfully")
-        }catch let error as NSError{
-            print(error)
+    
+    func deleteLeaguefromCoreData(leagueID: String){
+        
+        var index = 0
+        
+        fetchLeaguefromCoreData()
+        
+        for i in 0..<fetchedLeaguesArray.count{
+            if fetchedLeaguesArray[i].value(forKey: "leagueID") as! String == leagueID{
+                index = i
+                break
+            }
         }
-        delegate!.saveContext()
+        
+        CoreDataBuilder.deletefromCoreData(delegate: delegate!, index: index, view: view!, dataDeletedArray: &fetchedLeaguesArray)
     }
+    
+    func fetchLeaguefromCoreData(){
+        CoreDataBuilder.fetchFromCoreData(delegate: delegate!, view: view!, fetchedDataArray: &fetchedLeaguesArray, entityName: "FavoriteLeague")
+    }
+    
+    
+    
+    func isFavoriteLeague(leagueID: String) -> Bool{
+        
+        fetchLeaguefromCoreData()
+        
+        var isFavorite = false
+        
+        for i in 0..<fetchedLeaguesArray.count{
+            if fetchedLeaguesArray[i].value(forKey: "leagueID") as! String == leagueID{
+                isFavorite = !isFavorite
+                break
+            }
+        }
+        
+        
+        return isFavorite
+    }
+    
 }

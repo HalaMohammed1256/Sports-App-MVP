@@ -31,12 +31,19 @@ class HomeViewController: UIViewController, SportsView{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = MainColor.instance.backgroundColor
-        designView.backgroundColor = MainColor.instance.ViewColor
+        sportsPresenter = SportsPresenter(view: self)
+        
+        if reachability.connection == .unavailable{
+            
+        }else{
+            self.view.backgroundColor = MainColor.instance.backgroundColor
+            designView.backgroundColor = MainColor.instance.ViewColor
+            sportsPresenter?.getSports()
+        }
+        
+        
         sportsCollectionView.layer.cornerRadius = 15
         
-        sportsPresenter = SportsPresenter(view: self)
-        sportsPresenter?.getSports()
         
         indicator = ActivityIndicator(view: sportsCollectionView)
 
@@ -62,7 +69,7 @@ class HomeViewController: UIViewController, SportsView{
         }
     }
     
-    func reloadCollectionView() {
+    func reloadData() {
         DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
             self.sportsCollectionView.reloadData()
         })

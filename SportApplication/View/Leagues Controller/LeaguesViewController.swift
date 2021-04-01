@@ -53,7 +53,7 @@ extension LeaguesViewController : LeaguesView{
     func startAnimating() {
     }
     
-    func reloadTable() {
+    func reloadData() {
             self.leagueViewTableView.reloadData()
     }
 

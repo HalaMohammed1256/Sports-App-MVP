@@ -43,7 +43,8 @@ extension UpcomingEventTableViewCell: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return leagueEventsDetails.count 
+
+        return homeTeamDetails.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -61,7 +62,7 @@ extension UpcomingEventTableViewCell: UICollectionViewDelegate, UICollectionView
         cell.firstNameLabel.text = leagueEventsDetails[indexPath.row].strHomeTeam ?? ""
         cell.secondNameLabel.text = leagueEventsDetails[indexPath.row].strAwayTeam ?? ""
         
-        cell.dateLabel.text = "\((leagueEventsDetails[indexPath.row].strTime)!)\n\((leagueEventsDetails[indexPath.row].dateEvent)!)"
+        cell.dateLabel.text = "\(leagueEventsDetails[indexPath.row].strTime ?? "")\n\(leagueEventsDetails[indexPath.row].dateEvent ?? "")"
 
         
         if (homeTeamDetails.count) > indexPath.row {
@@ -81,7 +82,6 @@ extension UpcomingEventTableViewCell: UICollectionViewDelegate, UICollectionView
             
         }else{
             
-           // AlertViewBuilder.showAlert(presentedView: self, message: "There is no data", view: nil)
             print("there is no data")
         }
         
@@ -93,7 +93,7 @@ extension UpcomingEventTableViewCell: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-            return CGSize(width: (collectionView.frame.width/2.2), height: collectionView.frame.width/1.85)
+        return CGSize(width: (collectionView.frame.width/1.6), height: collectionView.frame.width/1.85)
     }
     
 }

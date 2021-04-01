@@ -9,14 +9,13 @@ import Foundation
 import CoreData
 import UIKit
 
-protocol FavoriteView : class{
-    func reloadTable()
-}
+
+
+protocol FavoriteView : class, SuperClass{}
 
 
 protocol FavoriteViewPresenter{
     init(view: FavoriteView, delegate: AppDelegate)
-    var favoriteLeaguesArray : [NSManagedObject]?{get set}
     
     func fetchFavoriteLeaguesFromCoreData()
     func deleteLeaguefromCoreData(index: Int)
@@ -32,46 +31,22 @@ class FavoritePresenter: FavoriteViewPresenter{
         self.delegate = delegate
     }
     
-    var favoriteLeaguesArray: [NSManagedObject]?{
+    var favoriteLeaguesArray = [NSManagedObject](){
         didSet{
-            self.view?.reloadTable()
+            self.view?.reloadData()
         }
     }
     
-    
-    
-    
-    func fetchFavoriteLeaguesFromCoreData() {
-        
-        let context = delegate!.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavoriteLeague")
-        
-        do{
-            favoriteLeaguesArray = try context.fetch(fetchRequest)
-            view?.reloadTable()
-            
-        }catch let error as NSError{
-            print(error)
-        }
-        
-        
+    func fetchFavoriteLeaguesFromCoreData(){
+        CoreDataBuilder.fetchFromCoreData(delegate: delegate!, view: view!, fetchedDataArray: &(favoriteLeaguesArray), entityName: "FavoriteLeague")
     }
-    
-    
+
+
+
     func deleteLeaguefromCoreData(index: Int){
-        
-        let context = delegate!.persistentContainer.viewContext
-        context.delete(favoriteLeaguesArray![index])
-        
-        do{
-            try context.save()
-            view?.reloadTable()
-            
-            print("Data deleted successfully")
-        }catch let error as NSError{
-            print(error)
-        }
-        delegate!.saveContext()
+        CoreDataBuilder.deletefromCoreData(delegate: delegate!, index: index, view: view!, dataDeletedArray: &(favoriteLeaguesArray))
     }
+    
+
 
 }

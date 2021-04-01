@@ -7,8 +7,7 @@
 
 import Foundation
 
-protocol LeaguesView : class{
-    func reloadTable()
+protocol LeaguesView : class, SuperClass{
     func startAnimating()
     func stopAnimating()
 }
@@ -45,7 +44,7 @@ class LeaguesPresenter: LeaguesViewPresenter{
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.leaguesDetails.sort(by: {$0[0].strLeague! < $1[0].strLeague!})
                 self.view?.stopAnimating()
-                self.view?.reloadTable()
+                self.view?.reloadData()
              
             }
         }
