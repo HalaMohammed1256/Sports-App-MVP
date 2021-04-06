@@ -79,7 +79,9 @@ extension HomeViewController : UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
         
-        performSegue(withIdentifier: "leagues", sender: self)
+        if reachability.connection == .cellular || reachability.connection == .wifi{
+            performSegue(withIdentifier: "leagues", sender: self)
+        }
         
        
         

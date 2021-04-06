@@ -56,14 +56,21 @@ extension UpcomingEventTableViewCell: UICollectionViewDelegate, UICollectionView
         
     
         cell.layer.cornerRadius = 10
+//        cell.firstNameLabel.font = .systemFont(ofSize: cell.frame.height * 0.07)
+//        cell.secondNameLabel.font = .systemFont(ofSize: cell.frame.height * 0.07)
+//        cell.dateLabel.font = .systemFont(ofSize: cell.frame.height * 0.07)
         
         
         if leagueEventsDetails[indexPath.row].strHomeTeam != nil{
         cell.firstNameLabel.text = leagueEventsDetails[indexPath.row].strHomeTeam ?? ""
         cell.secondNameLabel.text = leagueEventsDetails[indexPath.row].strAwayTeam ?? ""
+            
+        
         
         cell.dateLabel.text = "\(leagueEventsDetails[indexPath.row].strTime ?? "")\n\(leagueEventsDetails[indexPath.row].dateEvent ?? "")"
+        
 
+        
         
         if (homeTeamDetails.count) > indexPath.row {
             for i in 0..<homeTeamDetails.count{
@@ -93,7 +100,7 @@ extension UpcomingEventTableViewCell: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        return CGSize(width: (collectionView.frame.width/1.6), height: collectionView.frame.width/1.85)
+        return CGSize(width: (collectionView.frame.width/1.6), height: 0)
     }
     
 }

@@ -94,16 +94,20 @@ extension LastEventTableViewCell : UITableViewDataSource, UITableViewDelegate{
         cell.firstScoreLabel.backgroundColor = MainColor.instance.secondaryColor
         cell.firstScoreLabel.layer.cornerRadius = 12.5
         cell.firstScoreLabel.layer.masksToBounds = true
+//        cell.firstScoreLabel.font = .systemFont(ofSize: lastTableView.frame.height * 0.02)
         
         cell.secondScoreLabel.text = leagueEventsDetails[indexPath.row].intAwayScore
         cell.secondScoreLabel.backgroundColor = MainColor.instance.secondaryColor
         cell.secondScoreLabel.layer.masksToBounds = true
         cell.secondScoreLabel.layer.cornerRadius = 12.5
-        
+//        cell.secondScoreLabel.font = .systemFont(ofSize: lastTableView.frame.height * 0.02)
         
         
         cell.firstNameLabel.text = leagueEventsDetails[indexPath.row].strHomeTeam ?? ""
         cell.secondNameLabel.text = leagueEventsDetails[indexPath.row].strAwayTeam ?? ""
+            
+//        cell.firstNameLabel.font = .systemFont(ofSize: lastTableView.frame.height * 0.02)
+//        cell.secondNameLabel.font = .systemFont(ofSize: lastTableView.frame.height * 0.02)
         
         cell.dateLabel.text = "\((leagueEventsDetails[indexPath.row].strTime) ?? "")\n\(leagueEventsDetails[indexPath.row].dateEvent ?? "")"
             
