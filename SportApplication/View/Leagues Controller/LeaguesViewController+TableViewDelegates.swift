@@ -35,6 +35,7 @@ extension LeaguesViewController : UITableViewDelegate, SkeletonTableViewDataSour
         if (leaguesPresenter?.leaguesDetails.count)! > indexPath.row {
             
             leagueCell.LeagueNameLabel.text = leaguesPresenter?.leaguesDetails[indexPath.row][0].strLeague
+            leagueCell.LeagueNameLabel.font = .systemFont(ofSize: leagueViewTableView.frame.height * 0.025)
             
             leagueCell.leaugueImageView.layer.cornerRadius = 12
             

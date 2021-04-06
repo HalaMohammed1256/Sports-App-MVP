@@ -49,7 +49,15 @@ extension TeamDetailsViewController : UITableViewDelegate, UITableViewDataSource
             }
             
             cell.teamLogo.setImage(url: team?.strTeamBadge ?? "")
-            cell.teamStadiumImage.setImage(url: team?.strStadiumThumb ?? "")
+            
+            
+            
+            if let stadiumImage = team?.strStadiumThumb{
+                cell.teamStadiumImage.setImage(url: stadiumImage)
+            }else{
+                cell.teamStadiumImage.image = UIImage(named: "stadium")
+                cell.teamStadiumImage.contentMode = .scaleAspectFill
+            }
             cell.teamNameAndDateLabel.text = "\(team?.strTeam ?? "" ) \(team?.intFormedYear ?? "")"
             cell.leagueNameLabel.text = team?.strLeague
             cell.StadiumNameLabel.text = team?.strStadium

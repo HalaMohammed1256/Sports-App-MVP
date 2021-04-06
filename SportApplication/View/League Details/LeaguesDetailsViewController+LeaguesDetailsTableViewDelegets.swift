@@ -18,12 +18,12 @@ extension LeaguesDetailsViewController : UITableViewDelegate, UITableViewDataSou
 
         switch indexPath.section {
         case 0:
-            heightForRow = leagueDetailsTableView.frame.height*0.22    // upcoming collection view
+            heightForRow = view.frame.height*0.26    // upcoming collection view
         case 1:
-            heightForRow = leagueDetailsTableView.frame.height*0.47    // last table view
+            heightForRow = view.frame.height*0.5    // last table view
 
         case 2:
-            heightForRow = leagueDetailsTableView.frame.height*0.2    // team collection view
+            heightForRow = view.frame.height*0.2    // team collection view
         default:
             heightForRow = 0.0
         }
@@ -34,6 +34,22 @@ extension LeaguesDetailsViewController : UITableViewDelegate, UITableViewDataSou
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        var heightForHeader : CGFloat = 0.0
+
+        switch section {
+        case 0:
+            heightForHeader = view.frame.height*0.05    // upcoming collection view
+        case 1, 2:
+            heightForHeader = view.frame.height*0.03    // last table view & team collection view
+        default:
+            heightForHeader = 0.0
+        }
+
+        return heightForHeader
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
