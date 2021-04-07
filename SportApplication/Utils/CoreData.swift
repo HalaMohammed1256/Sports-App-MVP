@@ -9,11 +9,13 @@ import Foundation
 import UIKit
 import CoreData
 
+
 class CoreDataBuilder {
     
     
-    class func saveToCoreData(delegate: AppDelegate, entityName: String, dataArray: [Any], KeysArray: [String], removeDataInSameTime: inout NSManagedObject){
+    class func saveToCoreData(entityName: String, dataArray: [Any], KeysArray: [String], removeDataInSameTime: inout NSManagedObject){
 
+        let delegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: entityName, in: context)
         let entityRow = NSManagedObject(entity: entity!, insertInto: context)
@@ -35,8 +37,9 @@ class CoreDataBuilder {
     }
     
     
-    class func fetchFromCoreData(delegate: AppDelegate, view: SuperClass, fetchedDataArray : inout [NSManagedObject], entityName: String) {
+    class func fetchFromCoreData(view: SuperClass, fetchedDataArray : inout [NSManagedObject], entityName: String) {
         
+        let delegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
         
@@ -54,8 +57,9 @@ class CoreDataBuilder {
 
     
     
-    class func deletefromCoreData(delegate: AppDelegate, index: Int, view: SuperClass, dataDeletedArray : inout [NSManagedObject]){
+    class func deletefromCoreData(index: Int, view: SuperClass, dataDeletedArray : inout [NSManagedObject]){
         
+        let delegate = UIApplication.shared.delegate as! AppDelegate
         let context = delegate.persistentContainer.viewContext
         context.delete(dataDeletedArray[index])
         dataDeletedArray.remove(at: index)

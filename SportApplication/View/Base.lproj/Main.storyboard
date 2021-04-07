@@ -855,7 +855,7 @@
                                                     <rect key="frame" x="8" y="8" width="336" height="446"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0XN-7g-Krj">
-                                                    <rect key="frame" x="4" y="462" width="344" height="20"/>
+                                                    <rect key="frame" x="4" y="462" width="344" height="21.5"/>
                                                     <fontDescription key="fontDescription" name="Merriweather-Black" family="Merriweather" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1001,7 +1001,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="QtG-qW-kKz"/>
+        <segue reference="fUZ-iz-p3q"/>
         <segue reference="jsM-Yy-2Q7"/>
     </inferredMetricsTieBreakers>
     <resources>

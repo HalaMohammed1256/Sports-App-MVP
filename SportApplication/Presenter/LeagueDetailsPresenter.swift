@@ -15,7 +15,7 @@ protocol LeagueDetailsView: class, SuperClass {
 }
 
 protocol LeagueDetailsViewPresenter {
-    init(view: LeagueDetailsView, delegate : AppDelegate)
+    init(view: LeagueDetailsView)
     func getEventsData(apiURL: String, id: String)
     func getTeamsData(apiURL: String, id: String)
     func saveLeagueToCoreData(leagueID: String, leagueName: String, leagueYoutubeLink: String, leagueImage: String)
@@ -23,7 +23,6 @@ protocol LeagueDetailsViewPresenter {
 }
 
 class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
-    let delegate : AppDelegate?
     var favoriteLeague = NSManagedObject()
     let dispatchGroup = DispatchGroup()
     weak var view : LeagueDetailsView?
@@ -51,9 +50,8 @@ class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
         }
     }
     
-    required init(view: LeagueDetailsView, delegate : AppDelegate) {
+    required init(view: LeagueDetailsView) {
         self.view = view
-        self.delegate = delegate
     }
     
     var leagueEventsDetails = [Event](){
@@ -165,7 +163,7 @@ class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
         let dataArray = [leagueID, leagueName, leagueYoutubeLink, leagueImage]
         let KeysArray = ["leagueID", "leagueName", "leagueYoutubeLink", "leagueImage"]
         
-        CoreDataBuilder.saveToCoreData(delegate: delegate!, entityName: "FavoriteLeague", dataArray: dataArray, KeysArray: KeysArray, removeDataInSameTime: &(favoriteLeague))
+        CoreDataBuilder.saveToCoreData(entityName: "FavoriteLeague", dataArray: dataArray, KeysArray: KeysArray, removeDataInSameTime: &(favoriteLeague))
     }
     
     func deleteLeaguefromCoreData(leagueID: String){
@@ -181,11 +179,11 @@ class LeagueDetailsPresenter : LeagueDetailsViewPresenter{
             }
         }
         
-        CoreDataBuilder.deletefromCoreData(delegate: delegate!, index: index, view: view!, dataDeletedArray: &fetchedLeaguesArray)
+        CoreDataBuilder.deletefromCoreData(index: index, view: view!, dataDeletedArray: &fetchedLeaguesArray)
     }
     
     func fetchLeaguefromCoreData(){
-        CoreDataBuilder.fetchFromCoreData(delegate: delegate!, view: view!, fetchedDataArray: &fetchedLeaguesArray, entityName: "FavoriteLeague")
+        CoreDataBuilder.fetchFromCoreData(view: view!, fetchedDataArray: &fetchedLeaguesArray, entityName: "FavoriteLeague")
     }
     
     

@@ -32,7 +32,7 @@ class LeaguesDetailsViewController: UIViewController, LeagueDetailsView{
         super.viewDidLoad()
         
         
-        leaguesDetailsPresenter = LeagueDetailsPresenter(view: self, delegate: delegate)
+        leaguesDetailsPresenter = LeagueDetailsPresenter(view: self)
         
         leaguesDetailsPresenter?.getEventsData(apiURL: ApiURLs.leagueEvents.rawValue, id: leagueID ?? "")
         leaguesDetailsPresenter?.getTeamsData(apiURL: ApiURLs.leagueTeams.rawValue, id: leagueID ?? "")

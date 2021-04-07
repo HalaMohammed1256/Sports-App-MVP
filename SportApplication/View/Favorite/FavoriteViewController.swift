@@ -14,6 +14,8 @@ class FavoriteViewController: UIViewController, FavoriteView{
     var leagueName : String?
     var leagueYoutubeLink : String?
     var urlLink : String?
+    
+    
     var favoritePresenter : FavoritePresenter?
     let delegate = (UIApplication.shared.delegate as! AppDelegate)
     
@@ -31,7 +33,7 @@ class FavoriteViewController: UIViewController, FavoriteView{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        favoritePresenter = FavoritePresenter.init(view: self, delegate: delegate)
+        favoritePresenter = FavoritePresenter.init(view: self)
         favoritePresenter?.fetchFavoriteLeaguesFromCoreData()
     }
     

@@ -42,5 +42,5 @@ class LeagueViewTableViewCell: UITableViewCell {
         youtubeChannelAction?()
     }
     
-
+    
 }

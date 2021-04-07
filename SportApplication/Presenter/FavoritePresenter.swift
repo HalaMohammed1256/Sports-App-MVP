@@ -15,7 +15,7 @@ protocol FavoriteView : class, SuperClass{}
 
 
 protocol FavoriteViewPresenter{
-    init(view: FavoriteView, delegate: AppDelegate)
+    init(view: FavoriteView)
     
     func fetchFavoriteLeaguesFromCoreData()
     func deleteLeaguefromCoreData(index: Int)
@@ -23,12 +23,10 @@ protocol FavoriteViewPresenter{
 
 class FavoritePresenter: FavoriteViewPresenter{
     
-    let delegate : AppDelegate?
     weak var view : FavoriteView?
     
-    required init(view: FavoriteView, delegate: AppDelegate) {
+    required init(view: FavoriteView) {
         self.view = view
-        self.delegate = delegate
     }
     
     var favoriteLeaguesArray = [NSManagedObject](){
@@ -38,13 +36,13 @@ class FavoritePresenter: FavoriteViewPresenter{
     }
     
     func fetchFavoriteLeaguesFromCoreData(){
-        CoreDataBuilder.fetchFromCoreData(delegate: delegate!, view: view!, fetchedDataArray: &(favoriteLeaguesArray), entityName: "FavoriteLeague")
+        CoreDataBuilder.fetchFromCoreData(view: view!, fetchedDataArray: &(favoriteLeaguesArray), entityName: "FavoriteLeague")
     }
 
 
 
     func deleteLeaguefromCoreData(index: Int){
-        CoreDataBuilder.deletefromCoreData(delegate: delegate!, index: index, view: view!, dataDeletedArray: &(favoriteLeaguesArray))
+        CoreDataBuilder.deletefromCoreData(index: index, view: view!, dataDeletedArray: &(favoriteLeaguesArray))
     }
     
 

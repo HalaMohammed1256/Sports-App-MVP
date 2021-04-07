@@ -17,12 +17,29 @@ class LeaguesViewController: UIViewController {
     var leagueYoutubeLink : String?
     var leagueImage : String?
     var counter  = 0
+    
+    
+    var isFilled: Bool = false
+    var filteredData: [[LeagueDetails]]?
+    
+//    var filteredLeagueData = [String]()
+    
+    
+    
     @IBOutlet weak var leagueViewTableView: UITableView!{
         didSet{
             leagueViewTableView.delegate = self
             leagueViewTableView.dataSource = self
         }
     }
+    
+    
+    lazy var searchBar = UISearchBar(frame: CGRect.zero)
+//    {
+//        didSet{
+//            searchBar.delegate = self
+//        }
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +50,16 @@ class LeaguesViewController: UIViewController {
         
         leaguesPresenter = LeaguesPresenter(view: self)
         leaguesPresenter?.getAllFilteredLeagues(sport: sport ?? "")
+        
+        searchBar.delegate = self
+        
+//        filteredData?.append(contentsOf: (leaguesPresenter?.leaguesDetails)!)
+        
+        searchBar.placeholder = "search by league name"
+        
+        isFilled = false
+        
+        self.navigationItem.titleView = searchBar
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -45,7 +72,14 @@ class LeaguesViewController: UIViewController {
         leagueViewTableView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: animation)
         }
         counter += 1
+        
+        
+        
     }
+    
+    
+    
+    
 }
 
 extension LeaguesViewController : LeaguesView{
@@ -62,3 +96,4 @@ extension LeaguesViewController : LeaguesView{
         self.view.hideSkeleton()
     }
 }
+

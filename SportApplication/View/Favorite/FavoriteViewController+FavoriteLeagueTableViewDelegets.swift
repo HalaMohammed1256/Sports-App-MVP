@@ -121,6 +121,7 @@ extension FavoriteViewController : UITableViewDelegate, UITableViewDataSource{
             leagueDetailsDestination!.leagueID = idLeague
             leagueDetailsDestination!.leagueName = leagueName
             leagueDetailsDestination?.leagueYoutubeLink = leagueYoutubeLink
+            
         }
               
     }
