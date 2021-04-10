@@ -5,11 +5,16 @@ IOS App, tracks the global sports information
 
 Swift 5.0 
 
-Archeticture Pattern: MVP\n
+Archeticture Pattern: MVP
+
 Networking: Generic Alamofire network layer
+
 Data Presistence: Core Data
+
 Connection Reachibilty: Reachibilty
+
 Webview
+
 Autolayout with constraints
 
 
