@@ -21,7 +21,7 @@ Autolayout with constraints
 Api link: https://www.thesportsdb.com/api.php
 
 
-https://user-images.githubusercontent.com/48032047/114253245-c1825900-99a9-11eb-9a8f-0ee5db1235c5.mp4
+Application video: https://user-images.githubusercontent.com/48032047/114253245-c1825900-99a9-11eb-9a8f-0ee5db1235c5.mp4
 
 
 
